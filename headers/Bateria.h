@@ -9,8 +9,11 @@ class Bateria{
     int cap_max;
     int cap_init;
 public:
-    Bateria()
+    Bateria(int cap_max, int cap_init);
     ~Bateria();
+private:
+    void setCapMax(int cap_max);
+    void setCapInit(int cap_init);
 };
 
 
