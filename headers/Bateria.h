@@ -11,6 +11,8 @@ class Bateria{
 public:
     Bateria(int cap_max, int cap_init);
     ~Bateria();
+    void carregaBateria(int quantidade = 0);
+    void descarregaBateria(int quantidade = 0);
 private:
     void setCapMax(int cap_max);
     void setCapInit(int cap_init);

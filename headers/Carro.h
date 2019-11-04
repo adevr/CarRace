@@ -7,6 +7,8 @@
 
 #include <string>
 #include "./Piloto.h"
+#include "./Bateria.h"
+
 using namespace std;
 
 class Carro {
@@ -15,6 +17,7 @@ class Carro {
     int dano;
     int velocidade;
     Piloto piloto;
+    Bateria bateria;
 public:
     Carro(string marca, string modelo = "Modelo Base");
     ~Carro();
