@@ -8,6 +8,7 @@
 #include <string>
 #include "./Piloto.h"
 #include "./Bateria.h"
+#include "./SinalEmergencia.h"
 
 using namespace std;
 

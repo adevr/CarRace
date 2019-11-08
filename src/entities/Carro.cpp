@@ -6,12 +6,12 @@
 
 void Carro::setMarca(string marca) { Carro::marca = marca; }
 void Carro::setModelo(string modelo) { Carro::modelo = modelo; }
-void Carro::setID() {
-
-}
+void Carro::setID() {}
 
 Carro::Carro(string marca, string modelo = "Modelo Base") {
     Carro::setMarca(marca);
     Carro::setModelo(modelo);
     Carro::setID();
+    Carro::bateria = Bateria(100, 35);
+    Carro::sinal  = SinalEmergencia();
 }
