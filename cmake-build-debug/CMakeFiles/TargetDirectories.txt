@@ -1,2 +1,0 @@
-/cygdrive/d/Projetos/CarRace/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/cygdrive/d/Projetos/CarRace/cmake-build-debug/CMakeFiles/edit_cache.dir

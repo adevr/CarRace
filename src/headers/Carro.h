@@ -18,6 +18,7 @@ class Carro {
     int velocidade;
     Piloto piloto;
     Bateria bateria;
+    SinalEmergencia sinal;
 public:
     Carro(string marca, string modelo = "Modelo Base");
     ~Carro();
