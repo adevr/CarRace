@@ -14,4 +14,6 @@ Carro::Carro(string marca, string modelo = "Modelo Base") {
     Carro::setID();
     Carro::bateria = Bateria(100, 35);
     Carro::sinal  = SinalEmergencia();
+    Carro::acelerador = Acelerador(200);
+    Carro::travao = Travao(200);
 }
