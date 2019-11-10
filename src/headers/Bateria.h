@@ -2,8 +2,8 @@
 // Created by Alex Reis on 02/11/2019.
 //
 
-#ifndef CARRACE_BATERIA_H
-#define CARRACE_BATERIA_H
+#ifndef RACESIMULATOR_BATERIA_H
+#define RACESIMULATOR_BATERIA_H
 
 class Bateria{
     int cap_max;
@@ -22,5 +22,5 @@ private:
 };
 
 
-#endif //CARRACE_Bateria_H
+#endif //RACESIMULATOR_Bateria_H
 

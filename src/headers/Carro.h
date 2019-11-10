@@ -2,13 +2,15 @@
 // Created by Alex Reis on 02/11/2019.
 //
 
-#ifndef CARRACE_CARRO_H
-#define CARRACE_CARRO_H
+#ifndef RACESIMULATOR_CARRO_H
+#define RACESIMULATOR_CARRO_H
 
 #include <string>
 #include "./Piloto.h"
 #include "./Bateria.h"
 #include "./SinalEmergencia.h"
+#include "./Velocidade.h"
+
 
 using namespace std;
 
@@ -20,8 +22,10 @@ class Carro {
     Piloto piloto;
     Bateria bateria;
     SinalEmergencia sinal;
+    Velocidade velocidade;
+
 public:
-    Carro(string marca, string modelo = "Modelo Base");
+    Carro(string marca, string modelo, int capMax, int capIni, int velMax, int estado) ;
     ~Carro();
 private:
     void setMarca(string marca);
@@ -30,4 +34,4 @@ private:
 };
 
 
-#endif //CARRACE_CARRO_H
+#endif //RACESIMULATOR_CARRO_H

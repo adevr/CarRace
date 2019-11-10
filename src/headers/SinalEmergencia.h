@@ -2,8 +2,8 @@
 // Created by Alex Reis on 02/11/2019.
 //
 
-#ifndef CARRACE_SINALEMERGENCIA_H
-#define CARRACE_SINALEMERGENCIA_H
+#ifndef RACESIMULATOR_SINALEMERGENCIA_H
+#define RACESIMULATOR_SINALEMERGENCIA_H
 
 class SinalEmergencia{
     bool estado;
@@ -16,5 +16,5 @@ private:
 };
 
 
-#endif //CARRACE_SINALEMERGENCIA_H
+#endif //RACESIMULATOR_SINALEMERGENCIA_H
 

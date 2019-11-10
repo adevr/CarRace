@@ -2,8 +2,8 @@
 // Created by Alex Reis on 02/11/2019.
 //
 
-#ifndef CARRACE_PILOTO_H
-#define CARRACE_PILOTO_H
+#ifndef RACESIMULATOR_PILOTO_H
+#define RACESIMULATOR_PILOTO_H
 
 #include <string>
 using namespace std;
@@ -18,4 +18,4 @@ private:
 };
 
 
-#endif //CARRACE_CARRO_H
+#endif //RACESIMULATOR_CARRO_H

@@ -3,3 +3,9 @@
 //
 
 #include "../headers/Piloto.h"
+
+void Piloto::setNome(string nome) { Piloto::nome = nome; }
+
+Piloto::Piloto(string nome){
+    Piloto::setNome(nome);
+}
