@@ -13,8 +13,8 @@ public:
     ~Velocidade();
     int getVelMax();
     int getVelAtual();
-    int acelerar(int &velocidade);
-    int travar(int &velocidade);
+    int acelerar(int velocidade);
+    int travar(int velocidade);
 private:
     void setVelMax(int vel_max);
     void setVelAtual(int vel_atual);

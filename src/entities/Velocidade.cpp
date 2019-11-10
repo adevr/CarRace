@@ -9,13 +9,22 @@ void Velocidade::setVelAtual(int vel_atual){ Velocidade::vel_atual = vel_atual; 
 int Velocidade::getVelAtual(){ return Velocidade::vel_atual; }
 int Velocidade::getVelMax(){ return Velocidade::vel_max; }
 
-int Velocidade::acelerar(int &velocidade){
+int Velocidade::acelerar(int velocidade){
     int somaVelocidades = Velocidade::getVelAtual() + velocidade; 
     Velocidade::setVelAtual(((somaVelocidades) >= Velocidade::getVelMax()) ? Velocidade::getVelMax() : somaVelocidades);
+    return Velocidade::getVelAtual();
 }
 
-int Velocidade::travar(int &velocidade){
+int Velocidade::travar(int velocidade){
     int subtracaoVelocidades = Velocidade::getVelAtual() - velocidade;
     Velocidade::setVelAtual(((subtracaoVelocidades) <= 0) ? 0 : subtracaoVelocidades);
+    return Velocidade::getVelAtual();
 }
+
+Velocidade::Velocidade(int vel_max){
+    Velocidade::setVelAtual(0);
+    Velocidade::setVelMax(vel_max);
+}
+
+Velocidade::~Velocidade(){}
 
