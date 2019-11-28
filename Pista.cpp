@@ -13,12 +13,11 @@
 
 #include "Pista.h"
 
-Pista::Pista(int comprimento) {
+Pista::Pista(int comprimento, int capacidade) {
     Pista::comprimento = comprimento;
+    Pista::capacidade = capacidade;
 }
 
-Pista::Pista(const Pista& orig) {
-}
 
 Pista::~Pista() {
 }

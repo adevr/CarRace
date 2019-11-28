@@ -16,11 +16,16 @@
 
 void Carro::setMarca(string marca) { Carro::marca = marca; }
 void Carro::setModelo(string modelo) { Carro::modelo = modelo; }
-//void Carro::setBateria(Bateria bateria) { Carro::bateria = bateria; }
-string Carro::getMarca(){ return Carro::marca; }
+void Carro::setID(char id){Carro::id = id;}
 
-Carro::Carro(string marca, string modelo, int capMax, int capIni, int velMax, int estado){
+//void Carro::setBateria(Bateria bateria) { Carro::bateria = bateria; }
+string Carro::getMarca() const{ return Carro::marca; }
+char Carro::getID() const{ return Carro::id; }
+string Carro::getModelo() const {return Carro::modelo;}
+
+Carro::Carro(string marca, string modelo, int capMax, int capIni, int velMax, int estado, char id){
     setMarca(marca);
+    setID(id);
     if(modelo.empty()) setModelo("Modelo Base");
     else setModelo(modelo);
     
@@ -29,4 +34,7 @@ Carro::Carro(string marca, string modelo, int capMax, int capIni, int velMax, in
     Carro::bateria  
     Carro::sinal  = SinalEmergencia();
     Carro::velocidade = Velocidade(velMax); */
+}
+
+Carro::~Carro(){
 }

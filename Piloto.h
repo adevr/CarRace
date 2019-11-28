@@ -29,7 +29,8 @@ public:
     Piloto(string nome);
     ~Piloto();
     string getNome();
-    void entraCarro();
+    void entraCarro(Carro *c);
+    void saiCarro();
         
 
     //virtual void executaComportamento();

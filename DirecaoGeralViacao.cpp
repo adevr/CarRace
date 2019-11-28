@@ -21,6 +21,8 @@
 #include "DirecaoGeralViacao.h"
 #include "Consola.h"
 
+using namespace std;
+
 
 DirecaoGeralViacao::DirecaoGeralViacao(int id) {
     DirecaoGeralViacao::dgvID = id;
@@ -42,6 +44,16 @@ Piloto * DirecaoGeralViacao::novoPiloto(string nome){
     }  
     return nullptr;
 }
+
+Piloto * DirecaoGeralViacao::apagaPiloto(string nome){
+    if(procuraPiloto(nome) !=  nullptr){
+        for(size_t i=0; i < pilotos.size(); i++){
+            if(pilotos[i]->getNome() == nome) pilotos.erase(pilotos.begin() + i);
+        }
+        delete procuraPiloto(nome);
+    }
+}
+
 void DirecaoGeralViacao::carregaP(string file){
     ifstream dados(file);
     string primeiroNome;
@@ -72,22 +84,27 @@ void DirecaoGeralViacao::carregaP(string file){
  
 }
 
-Carro * DirecaoGeralViacao::procuraCarro(string marca){
+Carro * DirecaoGeralViacao::procuraCarro(char id){
         for (vector<Carro *>::const_iterator it = carros.cbegin();
             it != carros.cend();
             it++)
-        if ((*it)->getMarca() == marca)
+        if ((*it)->getID() == id)
             return *it;
     return nullptr;
 }
-Carro * DirecaoGeralViacao::novoCarro(int capInit, int capMax, string marca, string modelo, int velMax, int estado){
-    if (procuraCarro(marca) == nullptr) {
-        Carro * c = new Carro(marca, modelo,capMax, capInit,velMax,estado);
+Carro * DirecaoGeralViacao::novoCarro(int capInit, int capMax, string marca, string modelo, int velMax, int estado, char id){
+    id = rewriteID(id);
+    if (procuraCarro(id) != nullptr) novoCarro(capInit, capMax, marca, modelo, velMax, estado, id);
+    
+    if (procuraCarro(id) == nullptr) {
+        Carro * c = new Carro(marca, modelo,capMax, capInit,velMax,estado, id);
         carros.push_back(c);
         return c;
     }
     return nullptr;
 }
+
+
 void DirecaoGeralViacao::carregaC(string file){
     ifstream dados(file);
     int capInit;
@@ -102,21 +119,82 @@ void DirecaoGeralViacao::carregaC(string file){
     }
 
     bool ok;
+    int startpos = 9;
     while (!dados.eof()) {
         getline(dados, s);
         istringstream iss(s);
         iss >> capInit >> capMax >> marca >> modelo >> std::ws;  
         
-        //getline(iss, nome);
+        Consola::gotoxy(10, startpos);
+        cout << marca << " " << modelo;
         
         if(!marca.empty() && !modelo.empty()) 
-            novoCarro(capInit, capMax, marca, modelo, 1, 1);
+            novoCarro(capInit, capMax, marca, modelo, 1, 1, ' ');
 
+        startpos++;
     }
     dados.close();
  
 }
 
-Autodromo * DirecaoGeralViacao::procuraAutodromo(string id){}
-Autodromo * DirecaoGeralViacao::novoAutodromo(){}
-void DirecaoGeralViacao::carregaA(string file){}
+char DirecaoGeralViacao::rewriteID(char id){
+    char randomletter = 'a' + (rand() % 26);
+    return randomletter;
+}
+
+string DirecaoGeralViacao::rewriteNome(string nome){
+    char randomletter = 'A' + (rand() % 26);
+    return nome += randomletter;
+}
+
+Autodromo * DirecaoGeralViacao::procuraAutodromo(string nome){
+    for (vector<Autodromo *>::const_iterator it = autodromos.cbegin();
+        it != autodromos.cend();
+        it++)
+    if ((*it)->getNome() == nome)
+        return *it;
+    return nullptr;
+}
+
+Autodromo * DirecaoGeralViacao::novoAutodromo(string nome, int capacidade, int tamanho){
+    if(procuraAutodromo(nome) != nullptr) nome = rewriteNome(nome);
+    
+    if (procuraAutodromo(nome) == nullptr) {
+        Autodromo * a = new Autodromo(nome, capacidade, tamanho);
+        autodromos.push_back(a);
+        return a;
+    }
+    return nullptr;
+}
+
+void DirecaoGeralViacao::carregaA(string file){
+    ifstream dados(file);
+    int capacidade;
+    int tamanho;
+    string nome;
+    string s;
+    
+   
+    if (!dados.is_open()) {
+        return;
+    }
+
+    bool ok;
+    int startpos = 9;
+    while (!dados.eof()) {
+        getline(dados, s);
+        istringstream iss(s);
+        iss >> capacidade >> tamanho >> nome >> std::ws;  
+        
+        Consola::gotoxy(10, startpos);
+        cout << nome << " " << capacidade << " carros" << "\n";
+        
+        if(!nome.empty() && tamanho != 0 && capacidade != 0) 
+            novoAutodromo(nome, capacidade, tamanho);
+        
+        startpos++;
+
+    }
+    dados.close();
+
+}

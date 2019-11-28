@@ -13,13 +13,14 @@
 
 #include "Autodromo.h"
 
-void Autodromo::setCapacidade(int capacidade){ Autodromo::capacidade = capacidade; }
 void Autodromo::setNome(string nome){ Autodromo::nome = nome; }
 void Autodromo::setTamanho(int tamanho){ Autodromo::tamanho = tamanho; }
 
-Autodromo::Autodromo(string nome, int capacidade, int tamanho) {
+string Autodromo::getNome() const {return Autodromo::nome;}
+int Autodromo::getTamanho() const {return Autodromo::tamanho;}
+
+Autodromo::Autodromo(string nome, int capacidade, int tamanho) : pista(tamanho,capacidade){
     setNome(nome);
-    setCapacidade(capacidade);
     setTamanho(tamanho);
 }
 

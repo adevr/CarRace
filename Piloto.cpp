@@ -10,18 +10,26 @@
  * 
  * Created on 21 de novembro de 2019, 21:25
  */
-
+#include <iostream>
 #include <string>
 #include "Piloto.h"
 
+using namespace std;
+
 string Piloto::getNome() { return Piloto::nome; }
-void Piloto::entraCarro(){
-    if(carro == nullptr){
-        /*
-         * escolher em qual carro entrar.
-         * ter em atenção o id do carro .
-         */
+
+void Piloto::entraCarro(Carro *c){
+    if(Piloto::carro == nullptr){
+        Piloto::carro = c;
+    }else{
+    /**gotoxy*/
+        cout << "O carro ja esta ocupado";
     }
+}
+
+void Piloto::saiCarro(){
+    if(Piloto::carro != nullptr) Piloto::carro = nullptr;
+    else cout << "O piloto ja esta fora do carro.";
 }
 
 //void Piloto::executaComportamento(){}

@@ -24,20 +24,21 @@ using namespace std;
 
 class Carro {
     string marca, modelo;
-    char id[1];
+    char id;
     int dano;
     //Bateria bateria;
     //SinalEmergencia sinal;
     //Velocidade velocidade;
 
 public:
-    Carro(string marca, string modelo, int capMax, int capIni, int velMax, int estado);
+    Carro(string marca, string modelo, int capMax, int capIni, int velMax, int estado, char id=' ');
     ~Carro();
-    string getMarca();
-private:
+    string getMarca() const;
+    string getModelo() const;
     void setMarca(string marca);
     void setModelo(string modelo);
-    void setID();
+    void setID(char id);
+    char getID() const;
 };
 
 #endif /* CARRO_H */

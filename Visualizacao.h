@@ -14,7 +14,9 @@
 #ifndef VISUALIZACAO_H
 #define VISUALIZACAO_H
 
+#include <sstream>
 #include <vector>
+#include <typeinfo>
 #include "DirecaoGeralViacao.h"
 
 
@@ -28,7 +30,9 @@ public:
     void modoDois();
     void modoComandoUm();
     void exitCommand();
+    istringstream issReadCommand();
     
+private:
 };
 
 #endif /* VISUALIZACAO_H */

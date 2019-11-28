@@ -20,6 +20,7 @@
 #include "Carro.h"
 #include "Autodromo.h"
 
+
 class DirecaoGeralViacao {
     int dgvID;
     vector<Piloto *> pilotos;
@@ -29,20 +30,26 @@ public:
     DirecaoGeralViacao(int id);
     
     Piloto * novoPiloto(string nome);
+    Piloto * apagaPiloto(string nome);
     Piloto * procuraPiloto(string nome);
     void carregaP(string file);
     
-    Carro * novoCarro(int capInit, int capMax, string marca, string modelo, int velMax, int estado);
-    Carro * procuraCarro(string nome);
+    Carro * novoCarro(int capInit, int capMax, string marca, string modelo, int velMax, int estado, char id);
+    Carro * procuraCarro(char id);
     void carregaC(string file);
     
-    Autodromo * novoAutodromo();
-    Autodromo * procuraAutodromo();
+    Autodromo * novoAutodromo(string nome, int capacidade, int tamanho);
+    Autodromo * procuraAutodromo(string nome);
     void carregaA(string file);
+    
     
     vector<Piloto*> getPilotos() const { return pilotos;}
     vector<Carro*> getCarros() const { return carros;}
     vector<Autodromo*> getAutodromos() const{return autodromos;}
+    
+private:
+   string rewriteNome(string nome);
+   char rewriteID(char id);
 };
 
 #endif /* DIRECAOGERALVIACAO_H */

@@ -49,6 +49,8 @@
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
+    <itemPath>Autodromos.txt</itemPath>
+    <itemPath>Carros.txt</itemPath>
     <itemPath>Pilotos.txt</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
@@ -68,6 +70,8 @@
       </item>
       <item path="Autodromo.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Autodromos.txt" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Bateria.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Bateria.h" ex="false" tool="3" flavor2="0">
@@ -75,6 +79,8 @@
       <item path="Carro.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Carro.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Carros.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Consola.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -142,6 +148,8 @@
       </item>
       <item path="Autodromo.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Autodromos.txt" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Bateria.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Bateria.h" ex="false" tool="3" flavor2="0">
@@ -149,6 +157,8 @@
       <item path="Carro.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Carro.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Carros.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Consola.cpp" ex="false" tool="1" flavor2="0">
       </item>

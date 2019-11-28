@@ -15,11 +15,14 @@
 #define AUTODROMO_H
 
 #include <string>
+#include "Pista.h"
+#include "Garagem.h"
 
 using namespace std;
 
 class Autodromo {
-    //Pista pista;
+    Pista pista;
+    
     //Garagem garagem;
     string nome;
     int capacidade;
@@ -28,10 +31,10 @@ public:
     Autodromo(string nome, int capacidade, int tamanho);
     ~Autodromo();
     void setNome(string nome);
-    void setCapacidade(int capacidade);
     void setTamanho(int tamanho);
-
-
+    
+    string getNome() const;
+    int getTamanho() const; 
 };
 
 #endif /* AUTODROMO_H */

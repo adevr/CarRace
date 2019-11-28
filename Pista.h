@@ -13,15 +13,14 @@
 
 #ifndef PISTA_H
 #define PISTA_H
-#include "DirecaoGeralViacao.h"
+
 
 class Pista {
     int comprimento;
-   // Corrida * corrida;
-    DirecaoGeralViacao * dgv;
+    int capacidade;
+    //Corrida * corrida;
 public:
-    Pista(int comprimento);
-    Pista(const Pista& orig);
+    Pista(int comprimento, int capacidade);
     virtual ~Pista();
 private:
 
