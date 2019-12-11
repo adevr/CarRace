@@ -13,7 +13,7 @@
 
 #ifndef AUTODROMO_H
 #define AUTODROMO_H
-
+#include <sstream>
 #include <string>
 #include "Pista.h"
 #include "Garagem.h"
@@ -35,6 +35,8 @@ public:
     
     string getNome() const;
     int getTamanho() const; 
+    
+    string getAsString();
 };
 
 #endif /* AUTODROMO_H */

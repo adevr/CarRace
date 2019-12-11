@@ -24,6 +24,12 @@ Autodromo::Autodromo(string nome, int capacidade, int tamanho) : pista(tamanho,c
     setTamanho(tamanho);
 }
 
+string Autodromo::getAsString(){
+    ostringstream oss;
+    oss << "Nome: " << getNome() << " Tamanho: " << getTamanho();
+    
+    return oss.str();
+}
 Autodromo::~Autodromo() {
 }
 

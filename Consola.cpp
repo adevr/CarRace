@@ -155,7 +155,7 @@ void Consola::setTextSizeXP(int x, int y){
 #ifdef _MSC_VER
 	// Obt�m acesso �s fun��es "secretas" do Windows
 	SetConsoleFont_ SetConsoleFont = reinterpret_cast<SetConsoleFont_>(GetProcAddress(GetModuleHandle(L"kernel32.dll"), "SetConsoleFont"));
-	GetConsoleFontInfo_ GetConsoleFontInfo = reinterpret_cast<GetConsoleFontInfo_>(GetProcAddress(GetModuleHandle(L"kernel32.dll"), "GetConsoleFontInfo"));
+    //GetConsoleFontInfo_ GetConsoleFontInfo = reinterpret_cast<GetConsoleFontInfo_>(GetProcAddress(GetModuleHandle(L"kernel32.dll"), "GetConsoleFontInfo"));
 	GetNumberOfConsoleFonts_ GetNumberOfConsoleFonts = reinterpret_cast<GetNumberOfConsoleFonts_>(GetProcAddress(GetModuleHandle(L"kernel32.dll"), "GetNumberOfConsoleFonts"));
 
 	// Num de fontes
@@ -165,7 +165,7 @@ void Consola::setTextSizeXP(int x, int y){
 	CONSOLE_FONT_INFO* ConsoleInfo = new CONSOLE_FONT_INFO[sizeof(CONSOLE_FONT_INFO) * NumFonts];
 
 	// obtem info das fontes todas
-	GetConsoleFontInfo(hconsola, FALSE, NumFonts, ConsoleInfo);
+	//GetConsoleFontInfo(hconsola, FALSE, NumFonts, ConsoleInfo);
 
 	// percorre-as todas. O melhor � n�o chamar isto muitas vezes
 	for (size_t i = 0; i < NumFonts; ++i) {

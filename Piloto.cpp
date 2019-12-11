@@ -17,12 +17,19 @@
 using namespace std;
 
 string Piloto::getNome() { return Piloto::nome; }
+Carro * Piloto::getCarro(){ return Piloto::carro; }
+
+string Piloto::getAsString(){
+    ostringstream oss;
+    oss << "Nome: " << getNome();
+    
+    return oss.str();
+}
 
 void Piloto::entraCarro(Carro *c){
-    if(Piloto::carro == nullptr){
+    if(Piloto::carro == nullptr || Piloto::carro == 0){
         Piloto::carro = c;
     }else{
-    /**gotoxy*/
         cout << "O carro ja esta ocupado";
     }
 }

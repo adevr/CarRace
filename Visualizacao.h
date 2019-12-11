@@ -13,25 +13,33 @@
 
 #ifndef VISUALIZACAO_H
 #define VISUALIZACAO_H
-
+#include <iostream>
 #include <sstream>
 #include <vector>
 #include <typeinfo>
-#include "DirecaoGeralViacao.h"
+#include "Comando.h"
 
 
 class Visualizacao {
-    DirecaoGeralViacao *dgv;
+    Comando *comando;
+    int tempo;
 public:
-    Visualizacao(DirecaoGeralViacao *dgv);
+    Visualizacao(Comando *comando);
     
+    void moldura();
     void openConsole();
     void modoUm();
     void modoDois();
     void modoComandoUm();
-    void exitCommand();
+    void exitCommand(int type);
+    void listCommands();
+    void exitConfirmation();
     istringstream issReadCommand();
-    
+    void listObjects();
+    int getTempo();
+    void setTempo(int tempo);
+    void passatempo(int n);
+    void invalidCommand();
 private:
 };
 

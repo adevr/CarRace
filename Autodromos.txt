@@ -1,2 +1,4 @@
 10 50 Nuremberg
 12 45 Nuremberg
+12 20 Nurburing
+12 20 Estoril

@@ -22,8 +22,12 @@ using namespace std;
  */
 int main(int argc, char** argv) 
 {
-    DirecaoGeralViacao dgv = DirecaoGeralViacao(1);
-    Visualizacao ui((DirecaoGeralViacao*)&dgv);
+    DirecaoGeralViacao *dgv = new DirecaoGeralViacao(1);
+    EntidadeReguladoraAutodromos *era = new EntidadeReguladoraAutodromos(1);
+
+    Comando *comando = new Comando(dgv, era);
+
+    Visualizacao ui(comando);
     
     ui.openConsole();
     return 0;

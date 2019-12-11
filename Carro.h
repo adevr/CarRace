@@ -15,6 +15,7 @@
 #define CARRO_H
 
 #include <string>
+#include <sstream>
 #include "Bateria.h"
 #include "SinalEmergencia.h"
 #include "Velocidade.h"
@@ -39,6 +40,7 @@ public:
     void setModelo(string modelo);
     void setID(char id);
     char getID() const;
+    string getAsString();
 };
 
 #endif /* CARRO_H */

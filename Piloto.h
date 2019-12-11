@@ -15,6 +15,7 @@
 #define PILOTO_H
 
 #include <string>
+#include <sstream>
 #include "Carro.h"
 
 
@@ -29,9 +30,10 @@ public:
     Piloto(string nome);
     ~Piloto();
     string getNome();
+    Carro* getCarro();
     void entraCarro(Carro *c);
     void saiCarro();
-        
+    string getAsString();
 
     //virtual void executaComportamento();
 };

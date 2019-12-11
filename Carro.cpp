@@ -36,5 +36,12 @@ Carro::Carro(string marca, string modelo, int capMax, int capIni, int velMax, in
     Carro::velocidade = Velocidade(velMax); */
 }
 
+string Carro::getAsString(){
+    ostringstream oss;
+    oss << "Marca: " << getMarca() << " Modelo: " << getModelo() << " ID: " << getID();
+    
+    return oss.str();
+}
+
 Carro::~Carro(){
 }
