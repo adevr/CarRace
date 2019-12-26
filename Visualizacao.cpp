@@ -268,10 +268,17 @@ void Visualizacao::interpreterDois()
             break;
         }
         else if (nome.compare("corrida") == 0) {
+            moldura();
             comando->corrida();
             //exitCommand(2);
             //Consola::getch();
             //break;
+        }
+        else if (nome.compare("adicionaParticipante") == 0) {
+            comando->adicionaParticipante(com);
+            exitCommand(2);
+            Consola::getch();
+            break;
         }
         else {
             invalidCommand();

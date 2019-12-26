@@ -41,7 +41,7 @@ void Corrida::correr()
 void Corrida::iniciar()
 {
     int init, end, carPos;
-    init = 5;
+    init = 20;
     end = 115;
     carPos = 5;
         

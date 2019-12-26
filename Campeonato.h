@@ -35,9 +35,9 @@ class Campeonato
 
 public:
     Campeonato();
-    void iniciarProximaCorrida(vector<Autodromo*> autodromos);
+    void iniciarProximaCorrida();
     string getClassCampeonato();
-
+    void definirParticipante(Piloto* piloto);
 private:
     bool verificaOcurrenciaCorrida(Autodromo *autodromo);
 

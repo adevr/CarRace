@@ -19,7 +19,6 @@
 #include <iostream>
 #include "Piloto.h"
 #include "Consola.h"
-#include "Pista.h"
 
 using namespace std;
 

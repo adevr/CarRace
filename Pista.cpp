@@ -16,7 +16,7 @@
 Pista::Pista(int comprimento, int capacidade, vector < Piloto*>participantes) {
     Pista::comprimento = comprimento;
     Pista::capacidade = capacidade;
-    Corrida* corrida = new Corrida(participantes);
+    Pista::corrida = new Corrida(participantes);
 }
 
 
@@ -35,3 +35,7 @@ void Pista::setParticipante(Piloto* piloto)
 Pista::~Pista() {
 }
 
+vector < Piloto*> Pista::getParticipantes()
+{
+    return Pista::participantes;
+}

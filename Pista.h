@@ -14,12 +14,13 @@
 #ifndef PISTA_H
 #define PISTA_H
 
+#include "Piloto.h"
+#include "Corrida.h"
 #include <iostream>
 #include <vector>
 #include <string>
 
-#include "Piloto.h"
-#include "Corrida.h"
+
 
 using namespace std;
 
@@ -30,9 +31,9 @@ class Pista {
 public:
     Pista(int comprimento, int capacidade, vector <Piloto*>participantes);
     void setParticipante(Piloto* piloto);
-
+    vector < Piloto*> getParticipantes();
     Corrida* getCorrida() const;
-    virtual ~Pista();
+    ~Pista();
     
 private:
 

@@ -333,5 +333,16 @@ void Comando::mostraLogs()
 
 void Comando::corrida()
 {
-    campeonato->iniciarProximaCorrida(era->getAutodromos());
+    campeonato->iniciarProximaCorrida();
+}
+
+void Comando::adicionaParticipante(istringstream& info)
+{
+    string nome, apelido;
+
+    info >> nome >> apelido;
+
+    Piloto* participante = dgv->procuraPiloto(nome.append(" ").append(apelido));
+    campeonato->definirParticipante(participante);
+
 }

@@ -1,12 +1,5 @@
 ﻿  Comando.cpp
-  Corrida.cpp
-D:\VSC\CarRaceSimulator\Pista.h(28,12): error C2143: syntax error: missing ';' before '*'
-D:\VSC\CarRaceSimulator\Pista.h(28,12): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-D:\VSC\CarRaceSimulator\Pista.h(28,21): error C2238: unexpected token(s) preceding ';'
-D:\VSC\CarRaceSimulator\Pista.h(34,12): error C2143: syntax error: missing ';' before '*'
-D:\VSC\CarRaceSimulator\Pista.h(34,12): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-D:\VSC\CarRaceSimulator\Pista.h(34,32): error C2238: unexpected token(s) preceding ';'
-  DirecaoGeralViacao.cpp
   main.cpp
   Visualizacao.cpp
   Generating Code...
+  CarRaceSimulator.vcxproj -> D:\VSC\CarRaceSimulator\Debug\CarRaceSimulator.exe
