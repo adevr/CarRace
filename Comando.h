@@ -24,6 +24,7 @@
 #include "Consola.h"
 #include "DirecaoGeralViacao.h"
 #include "EntidadeReguladoraAutodromos.h"
+#include "Log.h"
 
 
 using namespace std;
@@ -32,8 +33,9 @@ class Comando
 {
     DirecaoGeralViacao* dgv;
     EntidadeReguladoraAutodromos* era;
+    Log log;
 public:
-    Comando(DirecaoGeralViacao* dgv, EntidadeReguladoraAutodromos* era);
+    Comando(DirecaoGeralViacao* dgv, EntidadeReguladoraAutodromos* era, Log log);
 
     void carregaA(string filename);
     void carregaP(string filename);
@@ -47,6 +49,17 @@ public:
 
     void lista();
     void ajuda();
+
+    void carregaBat(istringstream& info);
+    void carregaTudo();
+    
+    void listaCarros();
+    void destroi(istringstream &info);
+
+    void acidente(istringstream& info);
+    void stop(istringstream& info);
+
+    void mostraLogs();
 
     DirecaoGeralViacao* getDGV();
     EntidadeReguladoraAutodromos* getERA();

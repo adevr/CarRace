@@ -27,15 +27,20 @@ public:
     Visualizacao(Comando *comando);
     
     void moldura();
-    void openConsole();
+    void mainMenu();
+
     void modoUm();
+    void selectorModoUm();
+    void interpreterUm();
+
     void modoDois();
-    void modoComandoUm();
+    void interpreterDois();
+
     void exitCommand(int type);
     void listCommands();
     void exitConfirmation();
+
     istringstream issReadCommand();
-    void listObjects();
     int getTempo();
     void setTempo(int tempo);
     void passatempo(int n);

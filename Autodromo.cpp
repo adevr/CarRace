@@ -33,3 +33,8 @@ string Autodromo::getAsString(){
 Autodromo::~Autodromo() {
 }
 
+
+Corrida* Autodromo::getCorrida() const
+{
+    return corrida;
+}

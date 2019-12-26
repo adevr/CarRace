@@ -30,20 +30,21 @@ istringstream Visualizacao::issReadCommand() {
 }
 
 void Visualizacao::exitCommand(int type) {
-    Consola::gotoxy(45, 20);
+    Consola::gotoxy(10, 20);
     cout << "Comando executado com sucesso";
-    Consola::gotoxy(45, 22);
+    Consola::gotoxy(10, 22);
     cout << "(Esc) Voltar   (N) Novo";
     while (1) {
         char tecla = Consola::getch();
 
         switch ((int) tecla) {
             case 110:
-                if(type == 1) modoComandoUm();
+                if(type == 1) interpreterUm();
                 else if(type == 2) modoDois();
                 break;
             case 27:
-                modoUm();
+                if (type == 1) modoUm();
+                else if (type == 2) mainMenu();
                 break;
         }
         if (tecla == ' ')
@@ -52,79 +53,11 @@ void Visualizacao::exitCommand(int type) {
 
 }
 
-void Visualizacao::modoComandoUm() {
-    string nome;
-    string s1;
-    string s2;
-    string s3;
-
-    moldura();
-    Consola::gotoxy(45, 7);
-    cout << "            Modo 1            ";
-    Consola::gotoxy(45, 9);
-    cout << "##############################";
-    Consola::gotoxy(45, 26);
-    cout << "Comando > ";
-
-    while (1) {
-        istringstream com = issReadCommand();
-        com >> nome;
-        if (nome.compare("carregaP") == 0) {
-            com >> s1;
-            comando->carregaP(s1);
-            exitCommand(1);
-            Consola::getch();
-            break;
-        } else if (nome.compare("carregaC") == 0) {
-            com >> s1;
-            comando->carregaC(s1);
-            exitCommand(1);
-            Consola::getch();
-            break;
-        } else if (nome.compare("carregaA") == 0) {
-            com >> s1;
-            comando->carregaA(s1);
-            exitCommand(1);
-            Consola::getch();
-            break;
-        } else if (nome.compare("cria") == 0) {
-            comando->cria(com);
-            exitCommand(1);
-            Consola::getch();
-            break;
-        } else if (nome.compare("apaga") == 0) {
-            comando->apaga(com);
-            exitCommand(1);
-            Consola::getch();
-            break;
-        } else if (nome.compare("entranocarro") == 0) {
-            comando->pilotoEntraNoCarro(com);
-            exitCommand(1);
-            Consola::getch();
-            break;
-        } else if (nome.compare("saidocarro") == 0) {
-            // colocar o carro que está no piloto a null pointer
-            comando->pilotoSaiDoCarro(com);
-            exitCommand(1);
-            Consola::getch();
-            break;
-        } else if (nome.compare("lista") == 0) {
-            comando->lista();
-            exitCommand(1);
-            Consola::getch();
-            break;
-            //  get as string method nos carros, autodromos e pilotos
-        } else {
-            invalidCommand();
-            Consola::getch();
-            break;
-        }
-    }
-}
 
 void Visualizacao::modoUm() {
     moldura();
-    Consola::gotoxy(45, 7);
+
+    Consola::gotoxy(45, 3);
     cout << "            Modo 1            ";
     Consola::gotoxy(45, 9);
     cout << "##############################";
@@ -139,31 +72,110 @@ void Visualizacao::modoUm() {
     Consola::gotoxy(45, 16);
     cout << "##############################";
 
+    selectorModoUm();
 
+}
+
+void Visualizacao::selectorModoUm()
+{
     while (1) {
         char tecla = Consola::getch();
 
-        switch ((int) tecla) {
-            case 49:
-                modoComandoUm();
-                break;
-            case 27:
-                openConsole();
-                break;
-            case 120:
-                cout << "EXIT";
+        switch ((int)tecla) {
+        case 49:
+            interpreterUm();
+            break;
+        case 27:
+            mainMenu();
+            break;
+        case 120:
+            cout << "EXIT";
         }
         if (tecla == ' ')
             break;
     }
 }
 
-void Visualizacao::modoDois() {
+void Visualizacao::interpreterUm()
+{
     string nome;
     string s1;
     string s2;
     string s3;
 
+    moldura();
+
+    Consola::gotoxy(45, 3);
+    cout << "            Modo 1            ";
+    Consola::gotoxy(45, 26);
+    cout << "Comando > ";
+
+    while (1) {
+        istringstream com = issReadCommand();
+        com >> nome;
+        if (nome.compare("carregaP") == 0) {
+            com >> s1;
+            comando->carregaP(s1);
+            exitCommand(1);
+            Consola::getch();
+            break;
+        }
+        else if (nome.compare("carregaC") == 0) {
+            com >> s1;
+            comando->carregaC(s1);
+            exitCommand(1);
+            Consola::getch();
+            break;
+        }
+        else if (nome.compare("carregaA") == 0) {
+            com >> s1;
+            comando->carregaA(s1);
+            exitCommand(1);
+            Consola::getch();
+            break;
+        }
+        else if (nome.compare("cria") == 0) {
+            comando->cria(com);
+            exitCommand(1);
+            Consola::getch();
+            break;
+        }
+        else if (nome.compare("apaga") == 0) {
+            comando->apaga(com);
+            exitCommand(1);
+            Consola::getch();
+            break;
+        }
+        else if (nome.compare("entranocarro") == 0) {
+            comando->pilotoEntraNoCarro(com);
+            exitCommand(1);
+            Consola::getch();
+            break;
+        }
+        else if (nome.compare("saidocarro") == 0) {
+            // colocar o carro que está no piloto a null pointer
+            comando->pilotoSaiDoCarro(com);
+            exitCommand(1);
+            Consola::getch();
+            break;
+        }
+        else if (nome.compare("lista") == 0) {
+            comando->lista();
+            exitCommand(1);
+            Consola::getch();
+            break;
+            //  get as string method nos carros, autodromos e pilotos
+        }
+        else {
+            invalidCommand();
+            Consola::getch();
+            break;
+        }
+    }
+}
+
+
+void Visualizacao::modoDois() {
     moldura();
     Consola::gotoxy(45, 7);
     cout << "            Modo 2          ";
@@ -172,11 +184,21 @@ void Visualizacao::modoDois() {
     Consola::gotoxy(45, 26);
     cout << "Comando > ";
 
+    interpreterDois();
+}
+
+void Visualizacao::interpreterDois()
+{
+    string nome;
+    string s1;
+    string s2;
+    string s3;
+
     while (1) {
-        istringstream comando = issReadCommand();
-        comando >> nome;
+        istringstream com = issReadCommand();
+        com >> nome;
         if (nome.compare("campeonato") == 0) {
-            comando >> s1 >> s2 >> s3;
+            com >> s1 >> s2 >> s3;
             Consola::gotoxy(45, 15);
             cout << "Comando em desenvolvimento.. nao disponivel.";
             Consola::gotoxy(45, 16);
@@ -184,24 +206,68 @@ void Visualizacao::modoDois() {
             while (1) {
                 char tecla = Consola::getch();
 
-                switch ((int) tecla) {
-                    case 110:
-                        modoDois();
-                        break;
-                    case 27:
-                        openConsole();
-                        break;
+                switch ((int)tecla) {
+                case 110:
+                    modoDois();
+                    break;
+                case 27:
+                    mainMenu();
+                    break;
                 }
                 if (tecla == ' ')
                     break;
             }
-        }else if (nome.compare("passatempo") == 0) {
-            comando >> s1;
+        }
+        else if (nome.compare("passatempo") == 0) {
+            com >> s1;
             //passatempo(stoi(s1));
             exitCommand(2);
             Consola::getch();
             break;
-        } else {
+        }
+        else if (nome.compare("listacarros") == 0) {
+            comando->listaCarros();
+            exitCommand(2);
+            Consola::getch();
+            break;
+        }
+        else if (nome.compare("carregatudo") == 0) {
+            comando->carregaTudo();
+            exitCommand(2);
+            Consola::getch();
+            break;
+        }
+        else if (nome.compare("carregabat") == 0) {
+            comando->carregaBat(com);
+            exitCommand(2);
+            Consola::getch();
+            break;
+        }
+        else if (nome.compare("destroi") == 0) {
+            comando->destroi(com);
+            exitCommand(2);
+            Consola::getch();
+            break;
+        }
+        else if (nome.compare("acidente") == 0) {
+            comando->acidente(com);
+            exitCommand(2);
+            Consola::getch();
+            break;
+        }
+        else if (nome.compare("stop") == 0) {
+            comando->stop(com);
+            exitCommand(2);
+            Consola::getch();
+            break;
+        }
+        else if (nome.compare("log") == 0) {
+            comando->mostraLogs();
+            exitCommand(2);
+            Consola::getch();
+            break;
+        }
+        else {
             invalidCommand();
             Consola::getch();
             break;
@@ -209,7 +275,8 @@ void Visualizacao::modoDois() {
     }
 }
 
-void Visualizacao::openConsole() {
+
+void Visualizacao::mainMenu() {
     moldura();
     Consola::gotoxy(45, 4);
     cout << "      RACE SIMULATOR      ";
@@ -239,9 +306,6 @@ void Visualizacao::openConsole() {
     cout << "#      (x) Sair          #";
     Consola::gotoxy(45, 26);
     cout << "##########################";
-    /* 1 = 49
-     2 = 50
-     x = 120 */
 
     while (1) {
         char tecla = Consola::getch();
@@ -325,10 +389,10 @@ void Visualizacao::listCommands() {
 
         switch ((int) tecla) {
             case 49:
-                modoComandoUm();
+                interpreterUm();
                 break;
             case 27:
-                openConsole();
+                mainMenu();
                 break;
         }
         if (tecla == ' ')
@@ -359,7 +423,7 @@ void Visualizacao::exitConfirmation() {
                 exit(0);
                 break;
             case 110:
-                openConsole();
+                mainMenu();
                 break;
         }
         if (tecla == ' ')
@@ -389,7 +453,7 @@ void Visualizacao::invalidCommand() {
 
         switch ((int) tecla) {
             case 110:
-                modoComandoUm();
+                interpreterUm();
                 break;
             case 27:
                 modoUm();

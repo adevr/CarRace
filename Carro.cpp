@@ -17,31 +17,35 @@
 void Carro::setMarca(string marca) { Carro::marca = marca; }
 void Carro::setModelo(string modelo) { Carro::modelo = modelo; }
 void Carro::setID(char id){Carro::id = id;}
+void Carro::setDano(int dano) { Carro::dano = dano; }
 
-//void Carro::setBateria(Bateria bateria) { Carro::bateria = bateria; }
 string Carro::getMarca() const{ return Carro::marca; }
 char Carro::getID() const{ return Carro::id; }
 string Carro::getModelo() const {return Carro::modelo;}
+int Carro::getDano() const { return Carro::dano; }
 
 Carro::Carro(string marca, string modelo, int capMax, int capIni, int velMax, int estado, char id){
     setMarca(marca);
     setID(id);
+    setDano(0);
+
     if(modelo.empty()) setModelo("Modelo Base");
     else setModelo(modelo);
     
-    //bateria = Bateria();
-    /*
-    Carro::bateria  
-    Carro::sinal  = SinalEmergencia();
-    Carro::velocidade = Velocidade(velMax); */
+    Carro::bateria = new Bateria(capMax, capIni);
+    Carro::sinal = new SinalEmergencia();
+    Carro::velocidade = new Velocidade(velMax);
 }
 
 string Carro::getAsString(){
     ostringstream oss;
-    oss << "Marca: " << getMarca() << " Modelo: " << getModelo() << " ID: " << getID();
+    oss << "Marca: " << getMarca() << " Modelo: " << getModelo() << " ID: " << getID(); 
     
     return oss.str();
 }
+
+Bateria* Carro::getBateria() { return Carro::bateria; }
+Velocidade* Carro::getVelocidade() { return Carro::velocidade; }
 
 Carro::~Carro(){
 }

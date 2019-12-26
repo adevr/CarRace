@@ -35,6 +35,9 @@ public:
     void saiCarro();
     string getAsString();
 
+    void para();
+
+
     //virtual void executaComportamento();
 };
 #endif /* PILOTO_H */

@@ -14,16 +14,28 @@
 #ifndef CORRIDA_H
 #define CORRIDA_H
 
+#include <vector>
+#include <string>
+#include <iostream>
+#include "Piloto.h"
+#include "Consola.h"
+#include "Pista.h"
+
+using namespace std;
+
 class Corrida {
     bool estado;
+    vector<Piloto*> participantes;
+    Pista* pista;
 public:
     Corrida();
     Corrida(const Corrida& orig);
     virtual ~Corrida();
     
     void toggleCorrida(bool estado);
-private:
     bool __comecou();
+    void iniciar();
+    void correr();
 };
 
 #endif /* CORRIDA_H */

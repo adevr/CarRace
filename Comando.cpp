@@ -12,11 +12,10 @@
   */
 #include "Comando.h"
 
-
-
-Comando::Comando(DirecaoGeralViacao* dgv, EntidadeReguladoraAutodromos* era) {
+Comando::Comando(DirecaoGeralViacao* dgv, EntidadeReguladoraAutodromos* era, Log log) {
     Comando::dgv = dgv;
     Comando::era = era;
+    Comando::log = log;
 }
 
 void Comando::carregaA(string filename)
@@ -48,6 +47,7 @@ void Comando::carregaA(string filename)
 
     }
     dados.close();
+    log.addLog("Carregamento de Autodromos em massa.");
 }
 
 void Comando::carregaP(string filename)
@@ -77,6 +77,7 @@ void Comando::carregaP(string filename)
         startpos++;
     }
     dados.close();
+    log.addLog("Carregamento de Pilotos em massa.");
 }
 
 void Comando::carregaC(string filename)
@@ -108,8 +109,9 @@ void Comando::carregaC(string filename)
         startpos++;
     }
     dados.close();
-
+    log.addLog("Carregamento de Carros em massa.");
 }
+
 
 void Comando::cria(istringstream &info)
 {
@@ -120,6 +122,8 @@ void Comando::cria(istringstream &info)
     if (s1.compare("c") == 0) dgv->novoCarro(stoi(s2), stoi(s3), s4, s5, stoi(s6), stoi(s7), s8);
     if (s1.compare("p") == 0) dgv->novoPiloto(s3.append(" ").append(s4));
     if (s1.compare("a") == 0) era->novoAutodromo(s2, stoi(s3), stoi(s4));
+
+    log.addLog("Novo elemento criado.");
 }
 
 void Comando::apaga(istringstream &info)
@@ -130,24 +134,29 @@ void Comando::apaga(istringstream &info)
     if (s1.compare("c") == 0) dgv->apagaCarro(s2[1]);
     if (s1.compare("p") == 0) dgv->apagaPiloto(s2.append(" ").append(s3));
     if (s1.compare("a") == 0) era->apagaAutodromo(s2);
+
+    log.addLog("Elemento existente apagado.");
 }
 
 void Comando::pilotoEntraNoCarro(istringstream &info)
 {
-    string piloto; char carro;
+    string nome, apelido; char carro;
+    info >> carro >> nome >> apelido;
 
-    info >> piloto >> carro;
-    Piloto* p = dgv->procuraPiloto(piloto);
+    Piloto* p = dgv->procuraPiloto(nome.append(" ").append(apelido));
     Carro* c = dgv->procuraCarro(carro);
     p->entraCarro(c);
+
+    log.addLog(nome.append(" ").append(apelido).append(" entra no carro."));
 }
 
 void Comando::pilotoSaiDoCarro(istringstream &info) 
 {
-    string piloto;
+    string nome, apelido;
 
-    info >> piloto;
-    dgv->procuraPiloto(piloto)->saiCarro();
+    info >> nome >> apelido;
+    dgv->procuraPiloto(nome.append(" ").append(apelido))->saiCarro();
+    log.addLog(nome.append(" ").append(apelido).append(" sai do carro."));
 }
 
 void Comando::lista()
@@ -156,8 +165,8 @@ void Comando::lista()
     vector<Carro*> carros = dgv->getCarros();
     vector<Autodromo*> autodromos = era->getAutodromos();
 
-    int startpos = 12;
-    Consola::gotoxy(45, 11);
+    int startpos = 6;
+    Consola::gotoxy(45, 5);
     cout << "Pilotos";
     for (size_t i = 0; i < pilotos.size(); i++) {
         Consola::gotoxy(45, startpos);
@@ -182,6 +191,7 @@ void Comando::lista()
         cout << autodromos[i]->getAsString();
         startpos++;
     }
+    log.addLog("Listagem de elementos.");
 }
 
 void Comando::ajuda() {
@@ -212,4 +222,110 @@ void Comando::ajuda() {
     Consola::gotoxy(25, 19);
     cout << "----------------------------------------------------------------------------";
 
+}
+
+void Comando::carregaBat(istringstream& info)
+{
+    char carro; 
+    int mAh;
+    
+    info >> carro >> mAh;
+
+    Carro* c = dgv->procuraCarro(carro);
+    Bateria* b = c->getBateria();
+    Velocidade* v = c->getVelocidade();
+    
+    if (v->getVelAtual() == 0)
+        b->carregaBateria(mAh);
+    else {
+        Consola::gotoxy(1, 1);
+        cout << "Enquanto o carro estiver em movimento";
+        Consola::gotoxy(1, 2);
+        cout << "Não é possível carregar a sua bateria";
+    }
+    log.addLog("Carrega bateria do carro");
+}
+
+void Comando::carregaTudo()
+{
+    Bateria *bateria;
+    vector<Carro*> carros = dgv->getCarros();
+
+    for (size_t i = 0; i < carros.size(); i++){
+        bateria = carros[i]->getBateria();
+        bateria->carregaBateria(100);
+    }
+    
+    Consola::gotoxy(35, 16);
+    cout << "Todos os carros com as baterias no máximo";
+    log.addLog("Carrega bateria de todos os carros");
+}
+
+void Comando::listaCarros()
+{
+    Bateria* bat;
+    Velocidade* v;
+    vector<Carro*> carros = dgv->getCarros();
+
+    int startpos = 14;
+    Consola::gotoxy(45, 5);
+    for (size_t i = 0; i < carros.size(); i++) {
+        bat = carros[i]->getBateria();
+        v = carros[i]->getVelocidade();
+
+        Consola::gotoxy(15, startpos);
+        cout << "Marca: " << carros[i]->getMarca() << " | Modelo: " << carros[i]->getModelo()
+            << " | ID: " << carros[i]->getID() << " | Capacidade Atual: " << bat->getCapAtual()
+            << " | Velocidade Atual: " << v->getVelAtual();
+        startpos++;
+    }
+    log.addLog("Lista Carros");
+}
+
+void Comando::destroi(istringstream& info)
+{
+    char id;
+    info >> id;
+
+    vector<Piloto*> pilotos = dgv->getPilotos();
+
+    for (size_t i = 0; i < pilotos.size(); i++) {
+        Carro* c = pilotos[i]->getCarro();
+        if (c->getID() == id) pilotos[i]->saiCarro();
+    }
+    
+    dgv->apagaCarro(id);
+    log.addLog("Destroi carro.");
+}
+
+void Comando::acidente(istringstream& info) 
+{
+    char id;
+    info >> id;
+
+    Carro* c = dgv->procuraCarro(id);
+    c->setDano(100);
+    log.addLog("Acidente de viacao");
+}
+
+void Comando::stop(istringstream& info)
+{
+    string nome, apelido;
+
+    info >> nome >> apelido;
+    Piloto* piloto = dgv->procuraPiloto(nome.append(" ").append(apelido));
+    
+    piloto->para();
+    log.addLog(nome.append(" ").append(apelido).append(" para."));
+}
+
+void Comando::mostraLogs()
+{
+    static vector<string> logs = log.getLogs();
+
+    int startpos = 15;
+    for (size_t i = 0; i < logs.size(); i++) {
+        Consola::gotoxy(45, startpos + i);
+        cout << logs[i];
+    }
 }

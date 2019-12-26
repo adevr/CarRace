@@ -13,6 +13,7 @@
 
 #include "Corrida.h"
 
+
 void Corrida::toggleCorrida(bool estado){ 
     /*
      * falta verificar se existem pelo menos
@@ -30,5 +31,34 @@ Corrida::Corrida(const Corrida& orig) {
 }
 
 Corrida::~Corrida() {
+}
+
+void Corrida::correr() 
+{
+    
+}
+
+void Corrida::iniciar()
+{
+    int init, end, carPos;
+    init = 5;
+    end = 115;
+    carPos = 5;
+        
+    for (size_t i = 0; i < participantes.size(); i++) {
+        Consola::gotoxy(init, carPos + 5);
+        cout << "D";
+    }
+
+
+    //correr();
+    /*REVER AUTODROMO E PISTA
+     * detetar passatempo
+     * o primeiro carro a atingir a distancia total 
+     * que a pista tem é adicionado ao vetor classificacao
+     * quando todos os carros acabarem 
+     * a corrida acabou e muda o seu estado
+     */
+
 }
 

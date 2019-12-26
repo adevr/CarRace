@@ -24,12 +24,13 @@ int main(int argc, char** argv)
 {
     DirecaoGeralViacao *dgv = new DirecaoGeralViacao(1);
     EntidadeReguladoraAutodromos *era = new EntidadeReguladoraAutodromos(1);
+    Log log = Log();
 
-    Comando *comando = new Comando(dgv, era);
+    Comando *comando = new Comando(dgv, era, log);
 
     Visualizacao ui(comando);
     
-    ui.openConsole();
+    ui.mainMenu();
     return 0;
 }
 

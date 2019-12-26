@@ -21,13 +21,14 @@ Carro * Piloto::getCarro(){ return Piloto::carro; }
 
 string Piloto::getAsString(){
     ostringstream oss;
-    oss << "Nome: " << getNome();
-    
+    if (carro != nullptr) oss << "Nome: " << getNome() << "  -> " << "Carro: " << carro->getMarca() << " " << carro->getModelo();
+    else oss << "Nome: " << getNome();
+
     return oss.str();
 }
 
 void Piloto::entraCarro(Carro *c){
-    if(Piloto::carro == nullptr || Piloto::carro == 0){
+    if(Piloto::carro == nullptr){
         Piloto::carro = c;
     }else{
         cout << "O carro ja esta ocupado";
@@ -41,6 +42,17 @@ void Piloto::saiCarro(){
 
 //void Piloto::executaComportamento(){}
 
-Piloto::Piloto(string nome) : nome{nome} {}
+Piloto::Piloto(string nome) : nome{nome} 
+{
+    Piloto::carro = nullptr;
+}
 Piloto::~Piloto(){}
 
+
+void Piloto::para() 
+{
+    if (Piloto::carro != nullptr){
+        Velocidade* v = Piloto::carro->getVelocidade();
+        v->travar(v->getVelAtual());
+    }
+}

@@ -17,12 +17,13 @@
 #include <string>
 #include "Pista.h"
 #include "Garagem.h"
+#include "Corrida.h"
 
 using namespace std;
 
 class Autodromo {
     Pista pista;
-    
+    Corrida* corrida;
     //Garagem garagem;
     string nome;
     int capacidade;
@@ -37,6 +38,9 @@ public:
     int getTamanho() const; 
     
     string getAsString();
+    
+    Corrida* getCorrida() const;
+
 };
 
 #endif /* AUTODROMO_H */

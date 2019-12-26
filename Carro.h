@@ -27,20 +27,28 @@ class Carro {
     string marca, modelo;
     char id;
     int dano;
-    //Bateria bateria;
-    //SinalEmergencia sinal;
-    //Velocidade velocidade;
+    Bateria *bateria;
+    SinalEmergencia *sinal;
+    Velocidade *velocidade;
 
 public:
     Carro(string marca, string modelo, int capMax, int capIni, int velMax, int estado, char id=' ');
     ~Carro();
     string getMarca() const;
     string getModelo() const;
+    int getDano() const;
+
+    void setDano(int dano);
     void setMarca(string marca);
     void setModelo(string modelo);
+    
     void setID(char id);
     char getID() const;
+    
     string getAsString();
+
+    Bateria* getBateria();
+    Velocidade* getVelocidade();
 };
 
 #endif /* CARRO_H */
