@@ -14,27 +14,26 @@
 #include "Autodromo.h"
 
 void Autodromo::setNome(string nome){ Autodromo::nome = nome; }
-void Autodromo::setTamanho(int tamanho){ Autodromo::tamanho = tamanho; }
-
 string Autodromo::getNome() const {return Autodromo::nome;}
-int Autodromo::getTamanho() const {return Autodromo::tamanho;}
 
-Autodromo::Autodromo(string nome, int capacidade, int tamanho) : pista(tamanho,capacidade){
+
+Autodromo::Autodromo(string nome, int capacidade, int tamanho) {
     setNome(nome);
-    setTamanho(tamanho);
+    vector<Piloto*> participantes;
+    Autodromo::pista = new Pista(tamanho, capacidade, participantes);
 }
 
 string Autodromo::getAsString(){
     ostringstream oss;
-    oss << "Nome: " << getNome() << " Tamanho: " << getTamanho();
+    oss << "Nome: " << getNome();
     
     return oss.str();
 }
 Autodromo::~Autodromo() {
 }
 
-
-Corrida* Autodromo::getCorrida() const
+Pista* Autodromo::getPista() const
 {
-    return corrida;
+    return Autodromo::pista;
 }
+

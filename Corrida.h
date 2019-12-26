@@ -25,11 +25,9 @@ using namespace std;
 
 class Corrida {
     bool estado;
-    vector<Piloto*> participantes;
-    Pista* pista;
+    vector<Piloto*>participantes;
 public:
-    Corrida();
-    Corrida(const Corrida& orig);
+    Corrida(vector < Piloto*>participantes);
     virtual ~Corrida();
     
     void toggleCorrida(bool estado);

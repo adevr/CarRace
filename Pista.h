@@ -14,14 +14,26 @@
 #ifndef PISTA_H
 #define PISTA_H
 
+#include <iostream>
+#include <vector>
+#include <string>
+
+#include "Piloto.h"
+#include "Corrida.h"
+
+using namespace std;
 
 class Pista {
-    int comprimento;
-    int capacidade;
-    //Corrida * corrida;
+    int comprimento, capacidade;
+    Corrida* corrida;
+    vector <Piloto*> participantes;
 public:
-    Pista(int comprimento, int capacidade);
+    Pista(int comprimento, int capacidade, vector <Piloto*>participantes);
+    void setParticipante(Piloto* piloto);
+
+    Corrida* getCorrida() const;
     virtual ~Pista();
+    
 private:
 
 };

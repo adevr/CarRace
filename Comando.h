@@ -25,6 +25,7 @@
 #include "DirecaoGeralViacao.h"
 #include "EntidadeReguladoraAutodromos.h"
 #include "Log.h"
+#include "Campeonato.h"
 
 
 using namespace std;
@@ -34,8 +35,9 @@ class Comando
     DirecaoGeralViacao* dgv;
     EntidadeReguladoraAutodromos* era;
     Log log;
+    Campeonato* campeonato;
 public:
-    Comando(DirecaoGeralViacao* dgv, EntidadeReguladoraAutodromos* era, Log log);
+    Comando(DirecaoGeralViacao* dgv, EntidadeReguladoraAutodromos* era, Log log, Campeonato* campeonato);
 
     void carregaA(string filename);
     void carregaP(string filename);
@@ -60,6 +62,7 @@ public:
     void stop(istringstream& info);
 
     void mostraLogs();
+    void corrida();
 
     DirecaoGeralViacao* getDGV();
     EntidadeReguladoraAutodromos* getERA();

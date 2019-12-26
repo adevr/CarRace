@@ -12,10 +12,11 @@
   */
 #include "Comando.h"
 
-Comando::Comando(DirecaoGeralViacao* dgv, EntidadeReguladoraAutodromos* era, Log log) {
+Comando::Comando(DirecaoGeralViacao* dgv, EntidadeReguladoraAutodromos* era, Log log, Campeonato* campeonato) {
     Comando::dgv = dgv;
     Comando::era = era;
     Comando::log = log;
+    Comando::campeonato = campeonato;
 }
 
 void Comando::carregaA(string filename)
@@ -328,4 +329,9 @@ void Comando::mostraLogs()
         Consola::gotoxy(45, startpos + i);
         cout << logs[i];
     }
+}
+
+void Comando::corrida()
+{
+    campeonato->iniciarProximaCorrida(era->getAutodromos());
 }

@@ -24,14 +24,14 @@ void Corrida::toggleCorrida(bool estado){
 }
 bool Corrida::__comecou(){ return Corrida::estado; }
 
-Corrida::Corrida() {
+
+Corrida::Corrida(vector < Piloto*>participantes) 
+{
+    Corrida::participantes = participantes;
+    Corrida::toggleCorrida(false);
 }
 
-Corrida::Corrida(const Corrida& orig) {
-}
-
-Corrida::~Corrida() {
-}
+Corrida::~Corrida(){}
 
 void Corrida::correr() 
 {
@@ -59,6 +59,6 @@ void Corrida::iniciar()
      * quando todos os carros acabarem 
      * a corrida acabou e muda o seu estado
      */
-
+       
 }
 

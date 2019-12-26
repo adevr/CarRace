@@ -267,6 +267,12 @@ void Visualizacao::interpreterDois()
             Consola::getch();
             break;
         }
+        else if (nome.compare("corrida") == 0) {
+            comando->corrida();
+            //exitCommand(2);
+            //Consola::getch();
+            //break;
+        }
         else {
             invalidCommand();
             Consola::getch();

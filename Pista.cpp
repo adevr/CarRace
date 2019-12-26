@@ -13,11 +13,24 @@
 
 #include "Pista.h"
 
-Pista::Pista(int comprimento, int capacidade) {
+Pista::Pista(int comprimento, int capacidade, vector < Piloto*>participantes) {
     Pista::comprimento = comprimento;
     Pista::capacidade = capacidade;
+    Corrida* corrida = new Corrida(participantes);
 }
 
+
+Corrida* Pista::getCorrida() const
+{
+    return Pista::corrida;
+}
+
+void Pista::setParticipante(Piloto* piloto)
+{
+    if (piloto != nullptr)
+        participantes.push_back(piloto);
+    else cout << "Piloto Invalido";
+}
 
 Pista::~Pista() {
 }

@@ -34,7 +34,8 @@ class Campeonato
     string nome;
 
 public:
-    void iniciarPróximaCorrida(vector<Autodromo*> autodromos~W);
+    Campeonato();
+    void iniciarProximaCorrida(vector<Autodromo*> autodromos);
     string getClassCampeonato();
 
 private:
