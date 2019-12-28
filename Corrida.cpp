@@ -38,6 +38,12 @@ void Corrida::correr()
     
 }
 
+void Corrida::setParticipante(Piloto *piloto){
+    if (piloto != nullptr)
+        participantes.push_back(piloto);
+    else cout << "Piloto Invalido";
+}
+
 void Corrida::iniciar()
 {
     int init, end, carPos;
@@ -46,8 +52,9 @@ void Corrida::iniciar()
     carPos = 5;
         
     for (size_t i = 0; i < participantes.size(); i++) {
-        Consola::gotoxy(init, carPos + 5);
+        Consola::gotoxy(init, carPos);
         cout << "D";
+        carPos += 5;
     }
 
 

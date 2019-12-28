@@ -346,3 +346,17 @@ void Comando::adicionaParticipante(istringstream& info)
     campeonato->definirParticipante(participante);
 
 }
+
+void Comando::iniciarCampeonato(istringstream& info)
+{
+    string a1, a2, a3, a4;
+    vector <Autodromo*> autodromos;
+    info >> a1 >> a2 >> a3 >> a4;
+
+    if (era->procuraAutodromo(a1) != nullptr) autodromos.push_back(era->procuraAutodromo(a1));
+    if (era->procuraAutodromo(a2) != nullptr) autodromos.push_back(era->procuraAutodromo(a2));
+    if (era->procuraAutodromo(a3) != nullptr) autodromos.push_back(era->procuraAutodromo(a3));
+    if (era->procuraAutodromo(a4) != nullptr) autodromos.push_back(era->procuraAutodromo(a4));
+
+    campeonato->setAutodromos(autodromos);
+}

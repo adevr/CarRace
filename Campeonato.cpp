@@ -3,7 +3,6 @@
 
 Campeonato::Campeonato()
 {
-
 }
 
 bool Campeonato::verificaOcurrenciaCorrida(Autodromo *autodromo)
@@ -16,21 +15,31 @@ bool Campeonato::verificaOcurrenciaCorrida(Autodromo *autodromo)
 
 void Campeonato::iniciarProximaCorrida() 
 {
+	
 	for (size_t i = 0; i < autodromos.size(); i++) {
-		if (!verificaOcurrenciaCorrida(autodromos[i])) {
-			Pista* pista = autodromos[i]->getPista();
-			Corrida* corrida = pista->getCorrida();
-			corrida->iniciar();
-		}
+		Pista* pista = autodromos[i]->getPista();
+		Corrida* corrida = pista->getCorrida();
+		corrida->iniciar();
+		//pista->getParticipantes();
 	}
 }
 
 void Campeonato::definirParticipante(Piloto* piloto)
 {
+
 	for (size_t i = 0; i < autodromos.size(); i++) {
 		Pista* pista = autodromos[i]->getPista();
-		if (piloto->getCarro() != nullptr)
+		if (piloto->getCarro() != nullptr){
 			pista->setParticipante(piloto);
+			pista->getParticipantes();
+		}
 		else cout << "O piloto esta apeado";
 	}
+}
+
+vector <Autodromo*> Campeonato::getAutodromos() { return Campeonato::autodromos;  }
+
+void Campeonato::setAutodromos(vector <Autodromo*> autodromos)
+{
+	Campeonato::autodromos = autodromos;
 }

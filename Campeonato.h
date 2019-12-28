@@ -38,6 +38,8 @@ public:
     void iniciarProximaCorrida();
     string getClassCampeonato();
     void definirParticipante(Piloto* piloto);
+    void setAutodromos(vector <Autodromo*> autodromos);
+    vector <Autodromo*> getAutodromos();
 private:
     bool verificaOcurrenciaCorrida(Autodromo *autodromo);
 

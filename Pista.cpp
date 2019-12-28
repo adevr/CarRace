@@ -16,7 +16,7 @@
 Pista::Pista(int comprimento, int capacidade, vector < Piloto*>participantes) {
     Pista::comprimento = comprimento;
     Pista::capacidade = capacidade;
-    Pista::corrida = new Corrida(participantes);
+    Pista::corrida = new Corrida(Pista::participantes);
 }
 
 
@@ -27,8 +27,10 @@ Corrida* Pista::getCorrida() const
 
 void Pista::setParticipante(Piloto* piloto)
 {
-    if (piloto != nullptr)
+    if (piloto != nullptr) {
         participantes.push_back(piloto);
+        corrida->setParticipante(piloto);
+    }
     else cout << "Piloto Invalido";
 }
 

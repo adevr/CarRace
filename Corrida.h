@@ -28,7 +28,7 @@ class Corrida {
 public:
     Corrida(vector < Piloto*>participantes);
     virtual ~Corrida();
-    
+    void setParticipante(Piloto* piloto);
     void toggleCorrida(bool estado);
     bool __comecou();
     void iniciar();

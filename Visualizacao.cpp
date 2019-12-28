@@ -198,25 +198,10 @@ void Visualizacao::interpreterDois()
         istringstream com = issReadCommand();
         com >> nome;
         if (nome.compare("campeonato") == 0) {
-            com >> s1 >> s2 >> s3;
-            Consola::gotoxy(45, 15);
-            cout << "Comando em desenvolvimento.. nao disponivel.";
-            Consola::gotoxy(45, 16);
-            cout << "(ESC) Voltar";
-            while (1) {
-                char tecla = Consola::getch();
-
-                switch ((int)tecla) {
-                case 110:
-                    modoDois();
-                    break;
-                case 27:
-                    mainMenu();
-                    break;
-                }
-                if (tecla == ' ')
-                    break;
-            }
+            comando->iniciarCampeonato(com);
+            exitCommand(2);
+            Consola::getch();
+            break;
         }
         else if (nome.compare("passatempo") == 0) {
             com >> s1;

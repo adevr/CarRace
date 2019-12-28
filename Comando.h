@@ -64,6 +64,7 @@ public:
     void mostraLogs();
     void corrida();
     void adicionaParticipante(istringstream& info);
+    void iniciarCampeonato(istringstream& info);
 
     DirecaoGeralViacao* getDGV();
     EntidadeReguladoraAutodromos* getERA();
