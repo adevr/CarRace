@@ -149,6 +149,7 @@
     <ClInclude Include="EntidadeReguladoraAutodromos.h" />
     <ClInclude Include="Garagem.h" />
     <ClInclude Include="helper.h" />
+    <ClInclude Include="drawer.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="Piloto.h" />
     <ClInclude Include="Pista.h" />
@@ -169,6 +170,7 @@
     <ClCompile Include="EntidadeReguladoraAutodromos.cpp" />
     <ClCompile Include="Garagem.cpp" />
     <ClCompile Include="helper.cpp" />
+    <ClCompile Include="drawer.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Piloto.cpp" />
@@ -176,6 +178,9 @@
     <ClCompile Include="SinalEmergencia.cpp" />
     <ClCompile Include="Velocidade.cpp" />
     <ClCompile Include="Visualizacao.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

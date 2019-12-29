@@ -35,7 +35,7 @@ Corrida::~Corrida(){}
 
 void Corrida::correr() 
 {
-    
+    //for (size_t i =0; i< participantes.size(); i++)
 }
 
 void Corrida::setParticipante(Piloto *piloto){

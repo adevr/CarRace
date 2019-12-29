@@ -32,7 +32,6 @@ class Campeonato
     vector <Piloto*> pilotos;
     vector <string> classCampeonato;
     string nome;
-
 public:
     Campeonato();
     void iniciarProximaCorrida();

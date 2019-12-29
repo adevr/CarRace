@@ -34,7 +34,8 @@ void Pista::setParticipante(Piloto* piloto)
     else cout << "Piloto Invalido";
 }
 
-Pista::~Pista() {
+Pista::~Pista() 
+{
 }
 
 vector < Piloto*> Pista::getParticipantes()

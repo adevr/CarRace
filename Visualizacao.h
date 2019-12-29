@@ -18,6 +18,8 @@
 #include <vector>
 #include <typeinfo>
 #include "Comando.h"
+#include "Consola.h"
+#include "drawer.h"
 
 
 class Visualizacao {
@@ -26,9 +28,7 @@ class Visualizacao {
 public:
     Visualizacao(Comando *comando);
     
-    void moldura();
     void mainMenu();
-
     void modoUm();
     void selectorModoUm();
     void interpreterUm();
@@ -41,9 +41,6 @@ public:
     void exitConfirmation();
 
     istringstream issReadCommand();
-    int getTempo();
-    void setTempo(int tempo);
-    void passatempo(int n);
     void invalidCommand();
 private:
 };
