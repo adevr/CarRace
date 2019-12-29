@@ -43,3 +43,14 @@ void Campeonato::setAutodromos(vector <Autodromo*> autodromos)
 {
 	Campeonato::autodromos = autodromos;
 }
+
+void Campeonato::avancaTempo(int tempo)
+{
+	for (size_t i = 0; i < autodromos.size(); i++) {
+		if (!verificaOcurrenciaCorrida(autodromos[i])) {
+			Pista* pista = autodromos[i]->getPista();
+			Corrida* corrida = pista->getCorrida();
+			corrida->correr(tempo);
+		}
+	}
+}

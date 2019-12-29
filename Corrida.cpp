@@ -33,9 +33,15 @@ Corrida::Corrida(vector < Piloto*>participantes)
 
 Corrida::~Corrida(){}
 
-void Corrida::correr() 
+void Corrida::correr(int tempo) 
 {
-    //for (size_t i =0; i< participantes.size(); i++)
+    for (size_t i = 0; i < participantes.size(); i++) {
+        Carro* carro = participantes[i]->getCarro();
+        // tempo ..
+        Velocidade* velocidade = carro->getVelocidade();
+        
+        velocidade->acelerar();
+    }
 }
 
 void Corrida::setParticipante(Piloto *piloto){

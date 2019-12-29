@@ -24,7 +24,6 @@
 
 class Visualizacao {
     Comando *comando;
-    int tempo;
 public:
     Visualizacao(Comando *comando);
     

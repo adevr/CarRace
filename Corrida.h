@@ -32,7 +32,7 @@ public:
     void toggleCorrida(bool estado);
     bool __comecou();
     void iniciar();
-    void correr();
+    void correr(int tempo);
 };
 
 #endif /* CORRIDA_H */

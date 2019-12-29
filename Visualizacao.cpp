@@ -290,7 +290,7 @@ void Visualizacao::mainMenu() {
                 modoDois();
                 break;
             case 51:
-                listCommands();
+                listCommands(); 
                 break;
             case 120:
                 exitConfirmation();

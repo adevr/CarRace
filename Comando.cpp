@@ -360,3 +360,8 @@ void Comando::iniciarCampeonato(istringstream& info)
 
     campeonato->setAutodromos(autodromos);
 }
+
+void Comando::passatempo(int tempo)
+{
+    campeonato->avancaTempo();
+}
