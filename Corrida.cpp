@@ -35,13 +35,20 @@ Corrida::~Corrida(){}
 
 void Corrida::correr(int tempo) 
 {
+    int init, end, carPos;
+    init = 20;
+    end = 115;
+    carPos = 5;
+
     for (size_t i = 0; i < participantes.size(); i++) {
-        Carro* carro = participantes[i]->getCarro();
-        // tempo ..
-        Velocidade* velocidade = carro->getVelocidade();
-        
-        velocidade->acelerar();
+        //Carro* carro = participantes[i]->getCarro();
+        int distancia = participantes[i]->passatempo(tempo);
+        Consola::gotoxy(init+distancia, carPos);
+        cout << "D";
+        carPos += 5;
     }
+
+    // if vector distancia percorrida == tamanho da pista  esse carro não anda mais e passa para o vetor class;
 }
 
 void Corrida::setParticipante(Piloto *piloto){

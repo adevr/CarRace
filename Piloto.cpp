@@ -56,3 +56,10 @@ void Piloto::para()
         v->travar(v->getVelAtual());
     }
 }
+
+int Piloto::passatempo(int tempo) 
+{
+    Piloto::distanciaPercorrida = distanciaPercorrida+tempo;
+    Piloto::tempo += tempo;
+    return distanciaPercorrida;
+}

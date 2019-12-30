@@ -23,6 +23,8 @@ using namespace std;
 
 class Piloto {
     Carro *carro;
+    int tempo;
+    int distanciaPercorrida;
 protected:
     string nome;
     
@@ -36,7 +38,7 @@ public:
     string getAsString();
 
     void para();
-
+    int passatempo(int tempo);
 
     //virtual void executaComportamento();
 };

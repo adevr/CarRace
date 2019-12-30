@@ -52,6 +52,8 @@ void drawer::desenhaInterfaceCorrida()
 
     Consola::gotoxy(15, 26);
     cout << "Comando > ";
+    Consola::gotoxy(20, 26);
+
 }
 
 void drawer::desenhaMainMenuOptions()

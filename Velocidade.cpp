@@ -19,7 +19,7 @@ int Velocidade::getVelAtual(){ return Velocidade::vel_atual; }
 int Velocidade::getVelMax(){ return Velocidade::vel_max; }
 
 int Velocidade::acelerar(int velocidade){
-    int somaVelocidades = Velocidade::vel_atual + velocidade; 
+    int somaVelocidades = Velocidade::vel_atual + velocidade;
     Velocidade::setVelAtual(((somaVelocidades) >= Velocidade::vel_max) ? Velocidade::vel_max : somaVelocidades);
     return Velocidade::vel_atual;
 }

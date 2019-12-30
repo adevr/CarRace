@@ -206,7 +206,7 @@ void Visualizacao::interpreterDois()
         }
         else if (nome.compare("passatempo") == 0) {
             com >> s1;
-            //passatempo(stoi(s1));
+            comando->passatempo((int)&s1);
             exitCommand(2);
             Consola::getch();
             break;
@@ -256,6 +256,7 @@ void Visualizacao::interpreterDois()
         else if (nome.compare("corrida") == 0) {
             desenhaInterfaceCorrida();
             comando->corrida();
+            interpreterDois();
             //exitCommand(2);
             //Consola::getch();
             //break;

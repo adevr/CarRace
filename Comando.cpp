@@ -363,5 +363,5 @@ void Comando::iniciarCampeonato(istringstream& info)
 
 void Comando::passatempo(int tempo)
 {
-    campeonato->avancaTempo();
+    campeonato->avancaTempo(tempo);
 }
