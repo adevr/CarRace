@@ -35,6 +35,8 @@ public:
     void modoDois();
     void interpreterDois();
 
+    void interpreterCorrida();
+
     void exitCommand(int type);
     void listCommands();
     void exitConfirmation();

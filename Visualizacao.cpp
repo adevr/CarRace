@@ -206,6 +206,7 @@ void Visualizacao::interpreterDois()
         }
         else if (nome.compare("passatempo") == 0) {
             com >> s1;
+            desenhaInterfaceCorrida();
             comando->passatempo((int)&s1);
             exitCommand(2);
             Consola::getch();
@@ -256,7 +257,7 @@ void Visualizacao::interpreterDois()
         else if (nome.compare("corrida") == 0) {
             desenhaInterfaceCorrida();
             comando->corrida();
-            interpreterDois();
+            interpreterCorrida();
             //exitCommand(2);
             //Consola::getch();
             //break;
@@ -374,4 +375,31 @@ void Visualizacao::invalidCommand() {
             break;
     }
 
+}
+
+void Visualizacao::interpreterCorrida()
+{
+    string nome, s1, s2, s3;
+    int tempo;
+
+    while (1) {
+        istringstream com = issReadCommand();
+        com >> nome;
+
+        if(nome.compare("acidente")==0)
+            comando->acidente(com);
+        if(nome.compare("destroi")==0)
+            comando->destroi(com);
+        if(nome.compare("stop")==0)
+            comando->stop(com);
+        if(nome.compare("carregatudo")==0)
+            comando->carregaTudo();
+        if(nome.compare("carregabat")==0)
+            comando->carregaBat(com);
+        if(nome.compare("passatempo")==0){
+            com >> tempo;
+            desenhaInterfaceCorrida();
+            comando->passatempo(tempo);
+        }
+    }
 }
