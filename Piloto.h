@@ -39,6 +39,7 @@ public:
 
     void para();
     int passatempo(int tempo);
+    void setDistanciaPercorrida(int dist);
 
     //virtual void executaComportamento();
 };

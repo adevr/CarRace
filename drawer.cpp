@@ -125,3 +125,13 @@ void drawer::desenhaListagemAjuda()
     cout << "##############################";
 
 }
+
+void drawer::desenhaClassificacaoCorrida(vector<string> classificacao) 
+{
+    desenhaInterfaceCorrida();
+
+    for (size_t i = 1; i < classificacao.size(); i++) {
+        Consola::gotoxy(45, 10 + i);
+        cout << i << " - " << classificacao[i - 1];
+    }
+}

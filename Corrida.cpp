@@ -33,22 +33,34 @@ Corrida::Corrida(vector < Piloto*>participantes)
 
 Corrida::~Corrida(){}
 
-void Corrida::correr(int tempo) 
+bool Corrida::correr(int tempo, int tamanhoPista) 
 {
     int init, end, carPos;
     init = 20;
     end = 115;
     carPos = 5;
 
-    for (size_t i = 0; i < participantes.size(); i++) {
-        //Carro* carro = participantes[i]->getCarro();
-        int distancia = participantes[i]->passatempo(tempo);
-        Consola::gotoxy(init+distancia, carPos);
-        cout << "D";
-        carPos += 5;
+    if (participantes.size() == Corrida::classificacaoCorrida.size()) {
+        Consola::gotoxy(45, 20);
+        cout << "Corrida finalizada";
+        desenhaClassificacaoCorrida(Corrida::classificacaoCorrida);
+        toggleCorrida(true);
+        return true;
     }
 
-    // if vector distancia percorrida == tamanho da pista  esse carro não anda mais e passa para o vetor class;
+    for (size_t i = 0; i < participantes.size(); i++) {
+        int distancia = participantes[i]->passatempo(tempo);
+             
+        if (distancia >= tamanhoPista){
+            participantes[i]->setDistanciaPercorrida(tamanhoPista);
+            Corrida::classificacaoCorrida.push_back(participantes[i]->getNome());
+        }else {
+            Consola::gotoxy(init + tempo, carPos);
+            cout << "D";
+        }
+        carPos += 5;
+    }
+    return false;
 }
 
 void Corrida::setParticipante(Piloto *piloto){

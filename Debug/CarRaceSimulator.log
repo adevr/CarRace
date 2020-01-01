@@ -1,2 +1,11 @@
-﻿  Visualizacao.cpp
+﻿  Autodromo.cpp
+  Campeonato.cpp
+  Comando.cpp
+  Corrida.cpp
+  DirecaoGeralViacao.cpp
+  EntidadeReguladoraAutodromos.cpp
+  Pista.cpp
+  Visualizacao.cpp
+  main.cpp
+  Generating Code...
   CarRaceSimulator.vcxproj -> D:\VSC\CarRaceSimulator\Debug\CarRaceSimulator.exe

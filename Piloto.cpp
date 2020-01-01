@@ -63,3 +63,8 @@ int Piloto::passatempo(int tempo)
     Piloto::tempo += tempo;
     return distanciaPercorrida;
 }
+
+void Piloto::setDistanciaPercorrida(int dist)
+{
+    Piloto::distanciaPercorrida = dist;
+}

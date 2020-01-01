@@ -42,3 +42,8 @@ vector < Piloto*> Pista::getParticipantes()
 {
     return Pista::participantes;
 }
+
+int Pista::getComprimento() const
+{
+    return Pista::comprimento;
+}

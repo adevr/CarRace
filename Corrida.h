@@ -19,12 +19,15 @@
 #include <iostream>
 #include "Piloto.h"
 #include "Consola.h"
+#include "drawer.h"
 
 using namespace std;
+using namespace drawer;
 
 class Corrida {
     bool estado;
     vector<Piloto*>participantes;
+    vector<string> classificacaoCorrida;
 public:
     Corrida(vector < Piloto*>participantes);
     virtual ~Corrida();
@@ -32,7 +35,7 @@ public:
     void toggleCorrida(bool estado);
     bool __comecou();
     void iniciar();
-    void correr(int tempo);
+    bool correr(int tempo, int tamanhoPista);
 };
 
 #endif /* CORRIDA_H */

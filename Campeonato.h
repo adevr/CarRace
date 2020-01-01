@@ -30,6 +30,7 @@ class Campeonato
     vector <Autodromo *> autodromos;
     vector <Carro*> carros;
     vector <Piloto*> pilotos;
+    vector <bool> estados;
     vector <string> classCampeonato;
     string nome;
 public:

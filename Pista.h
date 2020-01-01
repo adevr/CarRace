@@ -34,6 +34,7 @@ public:
     vector < Piloto*> getParticipantes();
     Corrida* getCorrida() const;
     ~Pista();
+    int getComprimento() const;
     
 private:
 

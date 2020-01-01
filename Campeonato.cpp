@@ -17,12 +17,12 @@ void Campeonato::iniciarProximaCorrida()
 {
 	
 	for (size_t i = 0; i < autodromos.size(); i++) {
-			//if(!verificaOcurrenciaCorrida(autodromos[i])){
-		Pista* pista = autodromos[i]->getPista();
-		Corrida* corrida = pista->getCorrida();
-		corrida->iniciar();
-		break;
-		//pista->getParticipantes();
+		if (!verificaOcurrenciaCorrida(autodromos[i])) {
+			Pista* pista = autodromos[i]->getPista();
+			Corrida* corrida = pista->getCorrida();
+			corrida->iniciar();
+			break;
+		}
 	}
 }
 
@@ -46,11 +46,17 @@ void Campeonato::setAutodromos(vector <Autodromo*> autodromos)
 
 void Campeonato::avancaTempo(int tempo)
 {
-	for (size_t i = 0; i < autodromos.size(); i++) {
-		if (!verificaOcurrenciaCorrida(autodromos[i])) {
-			Pista* pista = autodromos[i]->getPista();
-			Corrida* corrida = pista->getCorrida();
-			corrida->correr(tempo);
+	if (autodromos.size() == Campeonato::estados.size())
+		cout << "Campeonato Finalizado";
+	else {
+		for (size_t i = 0; i < autodromos.size(); i++) {
+			if (!verificaOcurrenciaCorrida(autodromos[i])) {
+				Pista* pista = autodromos[i]->getPista();
+				Corrida* corrida = pista->getCorrida();
+				bool estado = corrida->correr(tempo, pista->getComprimento());
+				if (estado == true)
+					Campeonato::estados.push_back(estado);
+			}
 		}
 	}
 }

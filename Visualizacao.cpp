@@ -388,18 +388,23 @@ void Visualizacao::interpreterCorrida()
 
         if(nome.compare("acidente")==0)
             comando->acidente(com);
-        if(nome.compare("destroi")==0)
+        else if(nome.compare("destroi")==0)
             comando->destroi(com);
-        if(nome.compare("stop")==0)
+        else if(nome.compare("stop")==0)
             comando->stop(com);
-        if(nome.compare("carregatudo")==0)
+        else if(nome.compare("carregatudo")==0)
             comando->carregaTudo();
-        if(nome.compare("carregabat")==0)
+        else if(nome.compare("carregabat")==0)
             comando->carregaBat(com);
-        if(nome.compare("passatempo")==0){
+        else if(nome.compare("passatempo")==0){
             com >> tempo;
             desenhaInterfaceCorrida();
             comando->passatempo(tempo);
+        }
+        else {
+            invalidCommand();
+            Consola::getch();
+            break;
         }
     }
 }
