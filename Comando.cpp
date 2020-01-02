@@ -74,7 +74,7 @@ void Comando::carregaP(string filename)
         getline(iss, nome);
 
         cout << tipo << " " << nome;
-        if (!nome.empty())  Comando::dgv->novoPiloto(nome);
+        if (!nome.empty())  Comando::dgv->novoPiloto(nome, tipo);
         startpos++;
     }
     dados.close();
@@ -121,7 +121,7 @@ void Comando::cria(istringstream &info)
 
     info >> s1 >> s2 >> s3 >> s4 >> s5 >> s6 >> s7 >> s8;
     if (s1.compare("c") == 0) dgv->novoCarro(stoi(s2), stoi(s3), s4, s5, stoi(s6), stoi(s7), s8);
-    if (s1.compare("p") == 0) dgv->novoPiloto(s3.append(" ").append(s4));
+    if (s1.compare("p") == 0) dgv->novoPiloto(s3.append(" ").append(s4), s2);
     if (s1.compare("a") == 0) era->novoAutodromo(s2, stoi(s3), stoi(s4));
 
     log.addLog("Novo elemento criado.");

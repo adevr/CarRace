@@ -72,6 +72,12 @@
     <ClInclude Include="drawer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Crazy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Rapido.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Autodromo.cpp">
@@ -129,6 +135,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="drawer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Crazy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Rapido.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

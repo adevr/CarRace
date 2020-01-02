@@ -38,13 +38,19 @@ Piloto * DirecaoGeralViacao::procuraPiloto(string nome){
             return *it;
     return nullptr;
 }
-Piloto * DirecaoGeralViacao::novoPiloto(string nome){
+Piloto * DirecaoGeralViacao::novoPiloto(string nome, string tipo){
 
     if (procuraPiloto(nome) != nullptr){
         nome = rewriteNome(nome);
-        novoPiloto(nome);
+        novoPiloto(nome, tipo);
     }else if (procuraPiloto(nome) == nullptr) {
-        Piloto * p = new Piloto(nome);
+        Piloto* p;
+        if (tipo == "Crazy") {
+            p = new Crazy(nome);
+        }
+        else if (tipo == "Rapido") {
+            p = new Rapido(nome);
+        }
         pilotos.push_back(p);
         return p;
     }  

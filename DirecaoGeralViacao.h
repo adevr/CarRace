@@ -16,9 +16,11 @@
 
 #include <string>
 #include <vector>
-#include "Piloto.h"
+#include "Crazy.h"
+#include "Rapido.h"
 #include "Carro.h"
 #include "Autodromo.h"
+
 
 
 class DirecaoGeralViacao {
@@ -29,7 +31,7 @@ class DirecaoGeralViacao {
 public:
     DirecaoGeralViacao(int id);
     
-    Piloto * novoPiloto(string nome);
+    Piloto * novoPiloto(string nome, string tipo);
     Piloto * apagaPiloto(string nome);
     Piloto * procuraPiloto(string nome);
     

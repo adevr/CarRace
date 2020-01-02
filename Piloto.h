@@ -40,8 +40,11 @@ public:
     void para();
     int passatempo(int tempo);
     void setDistanciaPercorrida(int dist);
+    int getTempo() const;
+    void setTempo(int tempo);
+    int getDistanciaPercorrida() const;
 
-    //virtual void executaComportamento();
+    virtual int executaComportamento(int tempo) = 0;
 };
 #endif /* PILOTO_H */
 

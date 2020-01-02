@@ -145,6 +145,7 @@
     <ClInclude Include="Comando.h" />
     <ClInclude Include="Consola.h" />
     <ClInclude Include="Corrida.h" />
+    <ClInclude Include="Crazy.h" />
     <ClInclude Include="DirecaoGeralViacao.h" />
     <ClInclude Include="EntidadeReguladoraAutodromos.h" />
     <ClInclude Include="Garagem.h" />
@@ -153,6 +154,7 @@
     <ClInclude Include="Log.h" />
     <ClInclude Include="Piloto.h" />
     <ClInclude Include="Pista.h" />
+    <ClInclude Include="Rapido.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="SinalEmergencia.h" />
     <ClInclude Include="Velocidade.h" />
@@ -166,6 +168,7 @@
     <ClCompile Include="Comando.cpp" />
     <ClCompile Include="Consola.cpp" />
     <ClCompile Include="Corrida.cpp" />
+    <ClCompile Include="Crazy.cpp" />
     <ClCompile Include="DirecaoGeralViacao.cpp" />
     <ClCompile Include="EntidadeReguladoraAutodromos.cpp" />
     <ClCompile Include="Garagem.cpp" />
@@ -175,6 +178,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Piloto.cpp" />
     <ClCompile Include="Pista.cpp" />
+    <ClCompile Include="Rapido.cpp" />
     <ClCompile Include="SinalEmergencia.cpp" />
     <ClCompile Include="Velocidade.cpp" />
     <ClCompile Include="Visualizacao.cpp" />

@@ -40,7 +40,6 @@ void Piloto::saiCarro(){
     else cout << "O piloto ja esta fora do carro.";
 }
 
-//void Piloto::executaComportamento(){}
 
 Piloto::Piloto(string nome) : nome{nome} 
 {
@@ -67,4 +66,19 @@ int Piloto::passatempo(int tempo)
 void Piloto::setDistanciaPercorrida(int dist)
 {
     Piloto::distanciaPercorrida = dist;
+}
+
+int Piloto::getTempo() const 
+{
+    return Piloto::tempo;
+}
+
+void Piloto::setTempo(int tempo)
+{
+    Piloto::tempo += tempo;
+}
+
+int Piloto::getDistanciaPercorrida() const
+{
+    return Piloto::distanciaPercorrida;
 }

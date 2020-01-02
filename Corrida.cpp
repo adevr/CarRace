@@ -49,15 +49,21 @@ bool Corrida::correr(int tempo, int tamanhoPista)
     }
 
     for (size_t i = 0; i < participantes.size(); i++) {
-        int distancia = participantes[i]->passatempo(tempo);
+        int distanciaInit = participantes[i]->getDistanciaPercorrida();
+        int distancia = participantes[i]->executaComportamento(tempo);
              
         if (distancia >= tamanhoPista){
             participantes[i]->setDistanciaPercorrida(tamanhoPista);
             Corrida::classificacaoCorrida.push_back(participantes[i]->getNome());
-        }else {
+        }else if (distanciaInit == distancia){
+            Consola::gotoxy(init, carPos);
+            cout << "D";
+        }
+        else {
             Consola::gotoxy(init + tempo, carPos);
             cout << "D";
         }
+        
         carPos += 5;
     }
     return false;
