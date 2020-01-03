@@ -82,3 +82,9 @@ int Piloto::getDistanciaPercorrida() const
 {
     return Piloto::distanciaPercorrida;
 }
+
+bool Piloto::morre()
+{
+    Piloto::morto = true;
+    return Piloto::morto;    
+}

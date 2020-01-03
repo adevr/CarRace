@@ -25,6 +25,7 @@ class Piloto {
     Carro *carro;
     int tempo;
     int distanciaPercorrida;
+    bool morto = false;
 protected:
     string nome;
     
@@ -43,6 +44,8 @@ public:
     int getTempo() const;
     void setTempo(int tempo);
     int getDistanciaPercorrida() const;
+
+    bool morre();
 
     virtual int executaComportamento(int tempo) = 0;
 };

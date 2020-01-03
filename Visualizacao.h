@@ -43,7 +43,6 @@ public:
 
     istringstream issReadCommand();
     void invalidCommand();
-private:
 };
 
 #endif /* VISUALIZACAO_H */

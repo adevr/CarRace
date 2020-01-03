@@ -14,8 +14,7 @@ bool Campeonato::verificaOcurrenciaCorrida(Autodromo *autodromo)
 
 
 void Campeonato::iniciarProximaCorrida() 
-{
-	
+{	
 	for (size_t i = 0; i < autodromos.size(); i++) {
 		if (!verificaOcurrenciaCorrida(autodromos[i])) {
 			Pista* pista = autodromos[i]->getPista();

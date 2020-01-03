@@ -30,7 +30,7 @@
 
 using namespace std;
 
-class Comando
+class Comando 
 {
     DirecaoGeralViacao* dgv;
     EntidadeReguladoraAutodromos* era;

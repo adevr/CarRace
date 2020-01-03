@@ -146,7 +146,9 @@ void Comando::pilotoEntraNoCarro(istringstream &info)
 
     Piloto* p = dgv->procuraPiloto(nome.append(" ").append(apelido));
     Carro* c = dgv->procuraCarro(carro);
-    p->entraCarro(c);
+    if (!c->getDano() >= 70)
+        p->entraCarro(c);
+    else cout << "O carro esta danificado."
 
     log.addLog(nome.append(" ").append(apelido).append(" entra no carro."));
 }
@@ -242,23 +244,27 @@ void Comando::carregaBat(istringstream& info)
         Consola::gotoxy(1, 1);
         cout << "Enquanto o carro estiver em movimento";
         Consola::gotoxy(1, 2);
-        cout << "Não é possível carregar a sua bateria";
+        cout << "Nao e possivel carregar a sua bateria";
     }
     log.addLog("Carrega bateria do carro");
 }
 
 void Comando::carregaTudo()
 {
+    Velocidade *velocidade;
     Bateria *bateria;
     vector<Carro*> carros = dgv->getCarros();
 
     for (size_t i = 0; i < carros.size(); i++){
+        velocidade = carros[i]->getVelocidade();
         bateria = carros[i]->getBateria();
-        bateria->carregaBateria(100);
+        if (velocidade->getVelAtual() ==)
+            bateria->carregaBateria(100);
+        else cout << "O " << carros[i]->getMarca() << " " << carros[i]->getModelo() << " tem de estar parado para ser carregado";
     }
     
     Consola::gotoxy(35, 16);
-    cout << "Todos os carros com as baterias no máximo";
+    cout << "Todos os carros parados teem com as baterias no maximo";
     log.addLog("Carrega bateria de todos os carros");
 }
 
@@ -302,10 +308,19 @@ void Comando::destroi(istringstream& info)
 void Comando::acidente(istringstream& info) 
 {
     char id;
+    vector<Piloto*> pilotos;
     info >> id;
 
+    pilotos = dgv->getPilotos();
     Carro* c = dgv->procuraCarro(id);
-    c->setDano(100);
+    for (size_t i = 0; i < pilotos.size(); i++){
+        if (pilotos[i]->getCarro() == c){
+            Velocidade* v = c->getVelocidade();
+            v->travar(100);
+            c->setDano(100);
+            pilotos[i]->morre();
+        }
+    }
     log.addLog("Acidente de viacao");
 }
 

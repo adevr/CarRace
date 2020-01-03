@@ -204,14 +204,6 @@ void Visualizacao::interpreterDois()
             Consola::getch();
             break;
         }
-        else if (nome.compare("passatempo") == 0) {
-            com >> s1;
-            desenhaInterfaceCorrida();
-            comando->passatempo((int)&s1);
-            exitCommand(2);
-            Consola::getch();
-            break;
-        }
         else if (nome.compare("listacarros") == 0) {
             comando->listaCarros();
             exitCommand(2);
