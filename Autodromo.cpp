@@ -13,7 +13,7 @@
 
 #include "Autodromo.h"
 
-void Autodromo::setNome(string nome){ Autodromo::nome = nome; }
+void Autodromo::setNome(string nome) { Autodromo::nome = nome; }
 string Autodromo::getNome() const {return Autodromo::nome;}
 
 

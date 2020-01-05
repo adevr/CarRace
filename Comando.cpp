@@ -130,11 +130,19 @@ void Comando::cria(istringstream &info)
 void Comando::apaga(istringstream &info)
 {
     string s1, s2, s3;
-    
-    info >> s1 >> s2 >> s3;
-    if (s1.compare("c") == 0) dgv->apagaCarro(s2[1]);
-    if (s1.compare("p") == 0) dgv->apagaPiloto(s2.append(" ").append(s3));
-    if (s1.compare("a") == 0) era->apagaAutodromo(s2);
+    char c;
+    if (s1.compare("c") == 0){
+        info >> c; 
+        dgv->apagaCarro(c);
+    }
+    if (s1.compare("p") == 0){
+        info >> s1 >> s2 >> s3;
+        dgv->apagaPiloto(s2.append(" ").append(s3));
+    }
+    if (s1.compare("a") == 0){ 
+        info >> s1 >> s2 >> s3;
+        era->apagaAutodromo(s2);
+    }
 
     log.addLog("Elemento existente apagado.");
 }
@@ -198,33 +206,39 @@ void Comando::lista()
 }
 
 void Comando::ajuda() {
-    Consola::gotoxy(45, 7);
+    Consola::gotoxy(45, 2);
     cout << "      Listagem de Comandos      ";
-    Consola::gotoxy(25, 9);
+    Consola::gotoxy(25, 4);
     cout << "----------------------------------------------------------------------------";
-    Consola::gotoxy(25, 10);
+    Consola::gotoxy(25, 5);
     cout << "|    Comando    |     Argumentos     |              Descricao              |";
-    Consola::gotoxy(25, 11);
+    Consola::gotoxy(25, 6);
     cout << "----------------------------------------------------------------------------";
-    Consola::gotoxy(25, 12);
+    Consola::gotoxy(25, 7);
     cout << "|   carregaP    |      filename      |  Carrega os Pilotos no programa     |";
-    Consola::gotoxy(25, 13);
+    Consola::gotoxy(25, 8);
     cout << "|   carregaC    |      filename      |  Carrega os Carros no programa      |";
-    Consola::gotoxy(25, 14);
+    Consola::gotoxy(25, 9);
     cout << "|   carregaA    |      filename      |  Carrega os Autodromos no programa  |";
-    Consola::gotoxy(25, 15);
+    Consola::gotoxy(25, 10);
     cout << "|   cria        |     type, dados    |  Cria um objeto do tipo definido    |";
-    Consola::gotoxy(25, 16);
+    Consola::gotoxy(25, 11);
     cout << "|   apaga       |     type, ident    |  Apaga o objeto do tipo definido    |";
-    Consola::gotoxy(25, 17);
+    Consola::gotoxy(25, 12);
     cout << "| entranocarro  |    carro, piloto   |  O piloto entra no carro definido   |";
-    Consola::gotoxy(25, 18);
+    Consola::gotoxy(25, 13);
     cout << "|  saidocarro   |        carro       |  O piloto dentro do carro sai       |";
-    Consola::gotoxy(25, 18);
+    Consola::gotoxy(25, 14);
     cout << "|   lista       |        -----       |  Lista Pilotos, carros e autodromos |";
-    Consola::gotoxy(25, 19);
+    Consola::gotoxy(25, 15);
+    cout << "|   savedgv     |        -----       |  Guarda dgv em memoria              |";
+    Consola::gotoxy(25, 16);
+    cout << "|   loaddgv     |        -----       |  Substitui dgv em memoria           |";
+    Consola::gotoxy(25, 17);
+    cout << "|   deldgv      |        -----       |  Apaga dgv em memoria               |";
+    Consola::gotoxy(25, 18);
     cout << "----------------------------------------------------------------------------";
-
+    log.addLog("Listagem Ajuda");
 }
 
 void Comando::carregaBat(istringstream& info)
@@ -298,7 +312,9 @@ void Comando::destroi(istringstream& info)
 
     for (size_t i = 0; i < pilotos.size(); i++) {
         Carro* c = pilotos[i]->getCarro();
-        if (c->getID() == id) pilotos[i]->saiCarro();
+        if (c != nullptr){
+            if (c->getID() == id) pilotos[i]->saiCarro();
+        }
     }
     
     dgv->apagaCarro(id);
@@ -350,7 +366,9 @@ void Comando::mostraLogs()
 
 bool Comando::corrida()
 {
+    log.addLog("Corrida iniciada.");
     return campeonato->iniciarProximaCorrida();
+
 }
 
 void Comando::adicionaParticipante(istringstream& info)
@@ -361,6 +379,7 @@ void Comando::adicionaParticipante(istringstream& info)
 
     Piloto* participante = dgv->procuraPiloto(nome.append(" ").append(apelido));
     campeonato->definirParticipante(participante);
+    log.addLog("Adicionar Participante.");
 
 }
 
@@ -376,10 +395,12 @@ void Comando::iniciarCampeonato(istringstream& info)
     if (era->procuraAutodromo(a4) != nullptr) autodromos.push_back(era->procuraAutodromo(a4));
 
     campeonato->setAutodromos(autodromos);
+    log.addLog("Iniciar Campeonato.");
 }
 
 bool Comando::passatempo(int tempo)
 {
+    log.addLog("Avanca tempo durante a corrida.");
     return campeonato->avancaTempo(tempo);
 }
 

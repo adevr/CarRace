@@ -90,38 +90,58 @@ void drawer::desenhaMainMenuOptions()
 
 void drawer::desenhaListagemAjuda()
 {
-    Consola::gotoxy(45, 7);
+    Consola::gotoxy(45, 2);
     cout << "      Listagem de Comandos      ";
-    Consola::gotoxy(25, 9);
+    Consola::gotoxy(25, 4);
     cout << "----------------------------------------------------------------------------";
-    Consola::gotoxy(25, 10);
+    Consola::gotoxy(25, 5);
     cout << "|    Comando    |     Argumentos     |              Descricao              |";
-    Consola::gotoxy(25, 11);
+    Consola::gotoxy(25, 6);
     cout << "----------------------------------------------------------------------------";
-    Consola::gotoxy(25, 12);
+    Consola::gotoxy(25, 7);
     cout << "|   carregaP    |      filename      |  Carrega os Pilotos no programa     |";
-    Consola::gotoxy(25, 13);
+    Consola::gotoxy(25, 8);
     cout << "|   carregaC    |      filename      |  Carrega os Carros no programa      |";
-    Consola::gotoxy(25, 14);
+    Consola::gotoxy(25, 9);
     cout << "|   carregaA    |      filename      |  Carrega os Autodromos no programa  |";
-    Consola::gotoxy(25, 15);
+    Consola::gotoxy(25, 10);
     cout << "|   cria        |     type, dados    |  Cria um objeto do tipo definido    |";
-    Consola::gotoxy(25, 16);
+    Consola::gotoxy(25, 11);
     cout << "|   apaga       |     type, ident    |  Apaga o objeto do tipo definido    |";
-    Consola::gotoxy(25, 17);
+    Consola::gotoxy(25, 12);
     cout << "| entranocarro  |    carro, piloto   |  O piloto entra no carro definido   |";
-    Consola::gotoxy(25, 18);
+    Consola::gotoxy(25, 13);
     cout << "|  saidocarro   |        carro       |  O piloto dentro do carro sai       |";
-    Consola::gotoxy(25, 18);
+    Consola::gotoxy(25, 14);
     cout << "|   lista       |        -----       |  Lista Pilotos, carros e autodromos |";
+    Consola::gotoxy(25, 15);
+    cout << "|   savedgv     |        -----       |  Guarda dgv em memoria              |";
+    Consola::gotoxy(25, 16);
+    cout << "|   loaddgv     |        -----       |  Substitui dgv em memoria           |";
+    Consola::gotoxy(25, 17);
+    cout << "|   deldgv      |        -----       |  Apaga dgv em memoria               |";
+    Consola::gotoxy(25, 18);
+    cout << "|  campeonato   |     autodromos     |  Cria campeonato                    |";
     Consola::gotoxy(25, 19);
+    cout << "| listacarros   |        -----       |  Lista dados dos carros             |";
+    Consola::gotoxy(25, 20);
+    cout << "| carregabat    |    idcarro, camp   |  Carrega bateria de um carro        |";
+    Consola::gotoxy(25, 21);
+    cout << "| carregatudo   |        -----       |  Carrega bateria de todos os carros |";
+    Consola::gotoxy(25, 22);
+    cout << "|   corrida     |        -----       |  Inicia a proxima corrida           |";
+    Consola::gotoxy(25, 23);
+    cout << "|  passatempo   |        numero      |  Avanca tempo durante a corrida     |";
+    Consola::gotoxy(25, 24);
+    cout << "|   log         |        -----       |  Mostra os logs                     |";
+    Consola::gotoxy(25, 25);
     cout << "----------------------------------------------------------------------------";
 
-    Consola::gotoxy(45, 24);
-    cout << "##############################";
-    Consola::gotoxy(45, 25);
-    cout << "#    (ESC) Voltar            #";
     Consola::gotoxy(45, 26);
+    cout << "##############################";
+    Consola::gotoxy(45, 27);
+    cout << "#    (ESC) Voltar            #";
+    Consola::gotoxy(45, 28);
     cout << "##############################";
 
 }

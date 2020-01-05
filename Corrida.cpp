@@ -95,9 +95,12 @@ void Corrida::iniciar()
     carPos = 5;
         
     for (size_t i = 0; i < participantes.size(); i++) {
-        Consola::gotoxy(init, carPos);
-        cout << participantes[i]->getCarro()->getID();
-        carPos += 5;
+        if (participantes[i]->getCarro() != nullptr){
+            Consola::gotoxy(init, carPos);
+            cout << participantes[i]->getCarro()->getID();
+            
+        }   
+        carPos += 5;     
     }
     Consola::gotoxy(25, 26);  
 }

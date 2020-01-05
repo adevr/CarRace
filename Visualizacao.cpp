@@ -398,18 +398,7 @@ void Visualizacao::interpreterCorrida()
     while (1) {
         istringstream com = issReadCommand();
         com >> nome;
-
-        if(nome.compare("acidente")==0)
-            comando->acidente(com);
-        else if(nome.compare("destroi")==0)
-            comando->destroi(com);
-        else if(nome.compare("stop")==0)
-            comando->stop(com);
-        else if(nome.compare("carregatudo")==0)
-            comando->carregaTudo();
-        else if(nome.compare("carregabat")==0)
-            comando->carregaBat(com);
-        else if(nome.compare("passatempo")==0){
+        if(nome.compare("passatempo")==0){
             com >> tempo;
             desenhaInterfaceCorrida();
             if(comando->passatempo(tempo))
