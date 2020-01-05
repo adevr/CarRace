@@ -22,10 +22,6 @@ void Campeonato::iniciarProximaCorrida()
 			
 			if (pista->getParticipantes().size() >= 2){
 				corrida->iniciar();
-				
-				//	Sleep(2000);
-				//	desenhaInterfaceCorrida();
-				//corrida->correr(1, pista->getComprimento())
 			}else{
 				cout << "Nao existem participantes suficientes presentes na pista.";
 			}			
@@ -68,7 +64,6 @@ bool Campeonato::avancaTempo(int tempo)
 				}
 
 				break;
-				// validar campeonato terminado e corrida
 			}
 		}
 	}

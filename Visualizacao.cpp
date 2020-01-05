@@ -103,6 +103,7 @@ void Visualizacao::interpreterUm()
     string s1;
     string s2;
     string s3;
+    int n1;
 
     desenhaMenu();
 
@@ -165,7 +166,25 @@ void Visualizacao::interpreterUm()
             exitCommand(1);
             Consola::getch();
             break;
-            //  get as string method nos carros, autodromos e pilotos
+        }
+        else if (nome.compare("savedgv") == 0) {
+            com >> n1;
+            comando->saveDgv(n1);
+            exitCommand(1);
+            Consola::getch();
+            break;
+        }else if (nome.compare("loaddgv") == 0){
+            com >> n1 ;
+            comando->loadDgv(n1);
+            exitCommand(1);
+            Consola::getch();
+            break;
+        }else if (nome.compare("deldgv") == 0){
+            com >> n1;
+            comando->deleteDgv(n1);
+            exitCommand(1);
+            Consola::getch();
+            break;
         }
         else {
             invalidCommand();
@@ -393,6 +412,7 @@ void Visualizacao::interpreterCorrida()
             desenhaInterfaceCorrida();
             if(comando->passatempo(tempo))
                 break;
+
         }
     }
     while(1){

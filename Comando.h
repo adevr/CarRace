@@ -32,6 +32,7 @@ using namespace std;
 
 class Comando 
 {
+    vector<DirecaoGeralViacao *> backupDGV;
     DirecaoGeralViacao* dgv;
     EntidadeReguladoraAutodromos* era;
     Log log;
@@ -68,8 +69,13 @@ public:
 
     bool passatempo(int tempo);
 
+
     DirecaoGeralViacao* getDGV();
     EntidadeReguladoraAutodromos* getERA();
+
+    void saveDgv(int id);
+    void deleteDgv(int id);
+    void loadDgv(int id);
 };
 
 #endif /* COMANDO_H */

@@ -30,6 +30,8 @@ DirecaoGeralViacao::DirecaoGeralViacao(int id) {
     DirecaoGeralViacao::dgvID = id;
 }
 
+int DirecaoGeralViacao::getID(){return DirecaoGeralViacao::dgvID;}
+
 Piloto * DirecaoGeralViacao::procuraPiloto(string nome){
     for (vector<Piloto *>::const_iterator it = pilotos.cbegin();
             it != pilotos.cend();
@@ -100,3 +102,12 @@ Carro * DirecaoGeralViacao::apagaCarro(char id){
 }
 
 
+void DirecaoGeralViacao::setPilotos(vector<Piloto *> pilotos)
+{
+    DirecaoGeralViacao::pilotos = pilotos;
+}
+
+void DirecaoGeralViacao::setCarros(vector<Carro *> carros)
+{
+    DirecaoGeralViacao::carros = carros;
+}

@@ -382,3 +382,44 @@ bool Comando::passatempo(int tempo)
 {
     return campeonato->avancaTempo(tempo);
 }
+
+
+void Comando::saveDgv(int id){
+    for (size_t i = 0; i < backupDGV.size(); i++){
+        if (backupDGV[i]->getID() != id){
+            DirecaoGeralViacao *newDGV  = new DirecaoGeralViacao(id);
+            newDGV->setCarros(dgv->getCarros());
+            newDGV->setPilotos(dgv->getPilotos());
+
+            backupDGV.push_back(newDGV);
+        }
+    }
+}
+
+void Comando::deleteDgv(int id)
+{
+    if (backupDGV.size() > 1)
+    {
+        for (size_t i = 0; i < backupDGV.size(); i++){
+            if (backupDGV[i]->getID() == id){
+                if (backupDGV[i] != dgv){
+                    delete backupDGV[i];
+                    backupDGV.erase(backupDGV.begin() + i);
+                }
+            }
+        }
+    }
+}
+
+void Comando::loadDgv(int id) 
+{
+    for (size_t i = 0; i < backupDGV.size(); i++){
+        if (backupDGV[i]->getID() == id){
+            dgv->setPilotos(backupDGV[i]->getPilotos());
+            dgv->setCarros(backupDGV[i]->getCarros());
+        }
+    }
+}
+
+
+

@@ -39,8 +39,12 @@ public:
     Carro * apagaCarro(char id);
     Carro * procuraCarro(char id);
     
+    int getID();
     vector<Piloto*> getPilotos() const { return pilotos;}
     vector<Carro*> getCarros() const { return carros;}
+    void setPilotos(vector<Piloto*> pilotos);
+    void setCarros(vector<Carro*> carros);
+
 };
 
 #endif /* DIRECAOGERALVIACAO_H */
