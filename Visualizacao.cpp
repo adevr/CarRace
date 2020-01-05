@@ -391,12 +391,18 @@ void Visualizacao::interpreterCorrida()
         else if(nome.compare("passatempo")==0){
             com >> tempo;
             desenhaInterfaceCorrida();
-            comando->passatempo(tempo);
-        }
-        else {
-            invalidCommand();
-            Consola::getch();
-            break;
+            if(comando->passatempo(tempo))
+                break;
         }
     }
+    while(1){
+    char tecla = Consola::getch();
+    switch ((int) tecla) {
+        case 27:
+            mainMenu();
+            break;
+    }
+    if (tecla == ' ')
+        break;
+}
 }

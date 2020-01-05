@@ -66,7 +66,7 @@ public:
     void adicionaParticipante(istringstream& info);
     void iniciarCampeonato(istringstream& info);
 
-    void passatempo(int tempo);
+    bool passatempo(int tempo);
 
     DirecaoGeralViacao* getDGV();
     EntidadeReguladoraAutodromos* getERA();

@@ -52,7 +52,7 @@ void Campeonato::setAutodromos(vector <Autodromo*> autodromos)
 	Campeonato::autodromos = autodromos;
 }
 
-void Campeonato::avancaTempo(int tempo)
+bool Campeonato::avancaTempo(int tempo)
 {
 	if (autodromos.size() == Campeonato::estados.size())
 		cout << "Campeonato Finalizado";
@@ -62,12 +62,15 @@ void Campeonato::avancaTempo(int tempo)
 				Pista* pista = autodromos[i]->getPista();
 				Corrida* corrida = pista->getCorrida();
 				bool estado = corrida->correr(tempo, pista->getComprimento());
-				if (estado == true)
+				if (estado == true){
 					Campeonato::estados.push_back(estado);
+					return true;
+				}
 
 				break;
 				// validar campeonato terminado e corrida
 			}
 		}
 	}
+	return false;
 }

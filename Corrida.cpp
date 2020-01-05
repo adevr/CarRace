@@ -26,8 +26,6 @@ bool Corrida::__comecou(){ return Corrida::estado; }
 
 bool Corrida::finalizaCorrida(vector<Piloto*> participantes){
     if (participantes.size() == Corrida::classificacaoCorrida.size()) {
-        Consola::gotoxy(45, 20);
-        cout << "Corrida finalizada";
         desenhaClassificacaoCorrida(Corrida::classificacaoCorrida);
         toggleCorrida(true);
         Corrida::classificacaoCorrida.clear();
@@ -51,20 +49,18 @@ bool Corrida::correr(int tempo, int tamanhoPista)
     carPos = 5;
 
     for (size_t i = 0; i < participantes.size(); i++) {
-
         int distanciaInit = participantes[i]->getDistanciaPercorrida();
-        //int distanciaInit = cor
         // rever executacomportamento
         int distancia = participantes[i]->executaComportamento(tempo);
-        // porque o pixel fica preso 
-
         Carro * carro = participantes[i]->getCarro();
         Bateria* bateria =  carro->getBateria();
         Velocidade* velocidade = carro->getVelocidade();
 
         if (distancia >= tamanhoPista){
             participantes[i]->setDistanciaPercorrida(tamanhoPista);
-            Corrida::classificacaoCorrida.push_back(participantes[i]->getNome());
+            if (!(find(classificacaoCorrida.begin(), classificacaoCorrida.end(), participantes[i]->getNome()) != classificacaoCorrida.end()))
+                Corrida::classificacaoCorrida.push_back(participantes[i]->getNome());
+
         }else if (distanciaInit == distancia){
             velocidade->travar(1);
             Consola::gotoxy(init, carPos);

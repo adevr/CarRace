@@ -378,7 +378,7 @@ void Comando::iniciarCampeonato(istringstream& info)
     campeonato->setAutodromos(autodromos);
 }
 
-void Comando::passatempo(int tempo)
+bool Comando::passatempo(int tempo)
 {
-    campeonato->avancaTempo(tempo);
+    return campeonato->avancaTempo(tempo);
 }

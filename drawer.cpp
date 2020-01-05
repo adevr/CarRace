@@ -129,7 +129,10 @@ void drawer::desenhaListagemAjuda()
 void drawer::desenhaClassificacaoCorrida(vector<string> classificacao) 
 {
     desenhaInterfaceCorrida();
-
+    Consola::gotoxy(45, 20);
+    cout << "Corrida finalizada";
+    Consola::gotoxy(45, 22);
+    cout << "(Esc) Voltar ao Menu";
     for (size_t i = 0; i < classificacao.size(); i++) {
         int position = i+1;
         Consola::gotoxy(45, 10 + i);

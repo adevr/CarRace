@@ -40,7 +40,7 @@ public:
     void definirParticipante(Piloto* piloto);
     void setAutodromos(vector <Autodromo*> autodromos);
     vector <Autodromo*> getAutodromos();
-    void avancaTempo(int tempo);
+    bool avancaTempo(int tempo);
 private:
     bool verificaOcurrenciaCorrida(Autodromo *autodromo);
 
