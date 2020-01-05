@@ -20,7 +20,6 @@
 #include <fstream>
 #include <ostream>
 #include <sstream>
-
 #include "Consola.h"
 #include "DirecaoGeralViacao.h"
 #include "EntidadeReguladoraAutodromos.h"
@@ -29,6 +28,7 @@
 
 
 using namespace std;
+
 
 class Comando 
 {
@@ -63,7 +63,7 @@ public:
     void stop(istringstream& info);
 
     void mostraLogs();
-    void corrida();
+    bool corrida();
     void adicionaParticipante(istringstream& info);
     void iniciarCampeonato(istringstream& info);
 

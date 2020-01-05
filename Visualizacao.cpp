@@ -267,11 +267,13 @@ void Visualizacao::interpreterDois()
         }
         else if (nome.compare("corrida") == 0) {
             desenhaInterfaceCorrida();
-            comando->corrida();
-            interpreterCorrida();
-            //exitCommand(2);
-            //Consola::getch();
-            //break;
+            bool champ  = comando->corrida();
+            if (champ) {
+                exitCommand(2);
+                Consola::getch();
+                break;
+            }else interpreterCorrida();
+
         }
         else if (nome.compare("adicionaParticipante") == 0) {
             comando->adicionaParticipante(com);
@@ -412,7 +414,6 @@ void Visualizacao::interpreterCorrida()
             desenhaInterfaceCorrida();
             if(comando->passatempo(tempo))
                 break;
-
         }
     }
     while(1){
@@ -424,5 +425,5 @@ void Visualizacao::interpreterCorrida()
     }
     if (tecla == ' ')
         break;
-}
+    }
 }

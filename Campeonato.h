@@ -16,6 +16,7 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 #include <string>
 
 #include "EntidadeReguladoraAutodromos.h"
@@ -35,12 +36,15 @@ class Campeonato
     string nome;
 public:
     Campeonato();
-    void iniciarProximaCorrida();
-    string getClassCampeonato();
+    bool iniciarProximaCorrida();
+    vector <string> getClassCampeonato();
     void definirParticipante(Piloto* piloto);
     void setAutodromos(vector <Autodromo*> autodromos);
     vector <Autodromo*> getAutodromos();
+    vector <Piloto*> getPilotos();
     bool avancaTempo(int tempo);
+    void createClassificacao();
+    void classificacaoCampeonato();
 private:
     bool verificaOcurrenciaCorrida(Autodromo *autodromo);
 

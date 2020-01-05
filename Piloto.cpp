@@ -18,6 +18,8 @@ using namespace std;
 
 string Piloto::getNome() { return Piloto::nome; }
 Carro * Piloto::getCarro(){ return Piloto::carro; }
+int Piloto::getPontuacao() { return Piloto::pontuacao; }
+void Piloto::setPontuacao(int pontuacao) { Piloto::pontuacao = pontuacao; }
 
 string Piloto::getAsString(){
     ostringstream oss;

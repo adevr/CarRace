@@ -348,9 +348,9 @@ void Comando::mostraLogs()
     }
 }
 
-void Comando::corrida()
+bool Comando::corrida()
 {
-    campeonato->iniciarProximaCorrida();
+    return campeonato->iniciarProximaCorrida();
 }
 
 void Comando::adicionaParticipante(istringstream& info)

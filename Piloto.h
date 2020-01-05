@@ -26,6 +26,7 @@ class Piloto {
     int tempo;
     int distanciaPercorrida;
     bool morto = false;
+    int pontuacao;
 protected:
     string nome;
     
@@ -44,6 +45,9 @@ public:
     int getTempo() const;
     void setTempo(int tempo);
     int getDistanciaPercorrida() const;
+
+    int getPontuacao();
+    void setPontuacao(int pontuacao);
 
     bool morre();
 

@@ -58,9 +58,12 @@ bool Corrida::correr(int tempo, int tamanhoPista)
 
         if (distancia >= tamanhoPista){
             participantes[i]->setDistanciaPercorrida(tamanhoPista);
-            if (!(find(classificacaoCorrida.begin(), classificacaoCorrida.end(), participantes[i]->getNome()) != classificacaoCorrida.end()))
+            if (!(find(classificacaoCorrida.begin(), classificacaoCorrida.end(), participantes[i]->getNome()) != classificacaoCorrida.end())){
                 Corrida::classificacaoCorrida.push_back(participantes[i]->getNome());
-
+                if((i+1) == 1) participantes[i]->setPontuacao(participantes[i]->getPontuacao()+10);
+                if((i+1) == 2) participantes[i]->setPontuacao(participantes[i]->getPontuacao()+5);
+                if((i+1) == 3) participantes[i]->setPontuacao(participantes[i]->getPontuacao()+2); 
+            }
         }else if (distanciaInit == distancia){
             velocidade->travar(1);
             Consola::gotoxy(init, carPos);
