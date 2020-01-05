@@ -24,6 +24,16 @@ void Corrida::toggleCorrida(bool estado){
 }
 bool Corrida::__comecou(){ return Corrida::estado; }
 
+bool Corrida::finalizaCorrida(vector<Piloto*> participantes){
+    if (participantes.size() == Corrida::classificacaoCorrida.size()) {
+        Consola::gotoxy(45, 20);
+        cout << "Corrida finalizada";
+        desenhaClassificacaoCorrida(Corrida::classificacaoCorrida);
+        toggleCorrida(true);
+        Corrida::classificacaoCorrida.clear();
+        return true;
+    }else return false;
+}
 
 Corrida::Corrida(vector < Piloto*>participantes) 
 {
@@ -40,18 +50,14 @@ bool Corrida::correr(int tempo, int tamanhoPista)
     end = 115;
     carPos = 5;
 
-    if (participantes.size() == Corrida::classificacaoCorrida.size()) {
-        Consola::gotoxy(45, 20);
-        cout << "Corrida finalizada";
-        desenhaClassificacaoCorrida(Corrida::classificacaoCorrida);
-        toggleCorrida(true);
-        return true;
-    }
-
     for (size_t i = 0; i < participantes.size(); i++) {
 
         int distanciaInit = participantes[i]->getDistanciaPercorrida();
+        //int distanciaInit = cor
+        // rever executacomportamento
         int distancia = participantes[i]->executaComportamento(tempo);
+        // porque o pixel fica preso 
+
         Carro * carro = participantes[i]->getCarro();
         Bateria* bateria =  carro->getBateria();
         Velocidade* velocidade = carro->getVelocidade();
@@ -62,16 +68,18 @@ bool Corrida::correr(int tempo, int tamanhoPista)
         }else if (distanciaInit == distancia){
             velocidade->travar(1);
             Consola::gotoxy(init, carPos);
-            cout << "D";
+            cout << carro->getID();
         }else {
             velocidade->acelerar(1);
-            bateria->descarregaBateria(1);       
-            Consola::gotoxy(init + tempo, carPos);
-            cout << "D";
+            bateria->descarregaBateria(1);
+            Consola::gotoxy(init + distancia, carPos);
+            cout << carro->getID();
         }
         carPos += 5;
+        Consola::gotoxy(25, 26);
     }
-    return false;
+
+    return finalizaCorrida(participantes);
 }
 
 void Corrida::setParticipante(Piloto *piloto){
@@ -89,19 +97,9 @@ void Corrida::iniciar()
         
     for (size_t i = 0; i < participantes.size(); i++) {
         Consola::gotoxy(init, carPos);
-        cout << "D";
+        cout << participantes[i]->getCarro()->getID();
         carPos += 5;
     }
-
-
-    //correr();
-    /*REVER AUTODROMO E PISTA
-     * detetar passatempo
-     * o primeiro carro a atingir a distancia total 
-     * que a pista tem é adicionado ao vetor classificacao
-     * quando todos os carros acabarem 
-     * a corrida acabou e muda o seu estado
-     */
-       
+    Consola::gotoxy(25, 26);  
 }
 

@@ -49,6 +49,7 @@ public:
 
     Bateria* getBateria();
     Velocidade* getVelocidade();
+    SinalEmergencia* getSinal();
 };
 
 #endif /* CARRO_H */

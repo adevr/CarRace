@@ -52,7 +52,7 @@ void drawer::desenhaInterfaceCorrida()
 
     Consola::gotoxy(15, 26);
     cout << "Comando > ";
-    Consola::gotoxy(20, 26);
+    Consola::gotoxy(25, 26);
 
 }
 
@@ -130,8 +130,9 @@ void drawer::desenhaClassificacaoCorrida(vector<string> classificacao)
 {
     desenhaInterfaceCorrida();
 
-    for (size_t i = 1; i < classificacao.size(); i++) {
+    for (size_t i = 0; i < classificacao.size(); i++) {
+        int position = i+1;
         Consola::gotoxy(45, 10 + i);
-        cout << i << " - " << classificacao[i - 1];
+        cout << position << " - " << classificacao[i];
     }
 }

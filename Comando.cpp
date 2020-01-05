@@ -146,9 +146,9 @@ void Comando::pilotoEntraNoCarro(istringstream &info)
 
     Piloto* p = dgv->procuraPiloto(nome.append(" ").append(apelido));
     Carro* c = dgv->procuraCarro(carro);
-    if (!c->getDano() >= 70)
+    if (!(c->getDano() >= 70))
         p->entraCarro(c);
-    else cout << "O carro esta danificado."
+    else cout << "O carro esta danificado.";
 
     log.addLog(nome.append(" ").append(apelido).append(" entra no carro."));
 }
@@ -258,7 +258,7 @@ void Comando::carregaTudo()
     for (size_t i = 0; i < carros.size(); i++){
         velocidade = carros[i]->getVelocidade();
         bateria = carros[i]->getBateria();
-        if (velocidade->getVelAtual() ==)
+        if (velocidade->getVelAtual() == 0)
             bateria->carregaBateria(100);
         else cout << "O " << carros[i]->getMarca() << " " << carros[i]->getModelo() << " tem de estar parado para ser carregado";
     }
@@ -315,7 +315,9 @@ void Comando::acidente(istringstream& info)
     Carro* c = dgv->procuraCarro(id);
     for (size_t i = 0; i < pilotos.size(); i++){
         if (pilotos[i]->getCarro() == c){
+            SinalEmergencia* s = c->getSinal();
             Velocidade* v = c->getVelocidade();
+            s->setEstado(true);
             v->travar(100);
             c->setDano(100);
             pilotos[i]->morre();

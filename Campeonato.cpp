@@ -19,7 +19,16 @@ void Campeonato::iniciarProximaCorrida()
 		if (!verificaOcurrenciaCorrida(autodromos[i])) {
 			Pista* pista = autodromos[i]->getPista();
 			Corrida* corrida = pista->getCorrida();
-			corrida->iniciar();
+			
+			if (pista->getParticipantes().size() >= 2){
+				corrida->iniciar();
+				
+				//	Sleep(2000);
+				//	desenhaInterfaceCorrida();
+				//corrida->correr(1, pista->getComprimento())
+			}else{
+				cout << "Nao existem participantes suficientes presentes na pista.";
+			}			
 			break;
 		}
 	}
@@ -55,6 +64,9 @@ void Campeonato::avancaTempo(int tempo)
 				bool estado = corrida->correr(tempo, pista->getComprimento());
 				if (estado == true)
 					Campeonato::estados.push_back(estado);
+
+				break;
+				// validar campeonato terminado e corrida
 			}
 		}
 	}

@@ -20,7 +20,6 @@ public:
     SinalEmergencia();
     ~SinalEmergencia();
     bool getEstado();
-private:
     void setEstado(bool estado);
 };
 

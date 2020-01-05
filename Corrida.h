@@ -36,6 +36,8 @@ public:
     bool __comecou();
     void iniciar();
     bool correr(int tempo, int tamanhoPista);
+private:
+    bool finalizaCorrida(vector<Piloto*> participantes);
 };
 
 #endif /* CORRIDA_H */

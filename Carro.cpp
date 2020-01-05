@@ -46,6 +46,6 @@ string Carro::getAsString(){
 
 Bateria* Carro::getBateria() { return Carro::bateria; }
 Velocidade* Carro::getVelocidade() { return Carro::velocidade; }
-
+SinalEmergencia* Carro::getSinal() { return Carro::sinal; }
 Carro::~Carro(){
 }
