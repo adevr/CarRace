@@ -154,11 +154,14 @@ void Comando::pilotoEntraNoCarro(istringstream &info)
 
     Piloto* p = dgv->procuraPiloto(nome.append(" ").append(apelido));
     Carro* c = dgv->procuraCarro(carro);
-    if (!(c->getDano() >= 70))
-        p->entraCarro(c);
-    else cout << "O carro esta danificado.";
+    if (c != nullptr && p != nullptr) {
+        if (!(c->getDano() >= 70))
+            p->entraCarro(c);
+        else cout << "O carro esta danificado.";
 
-    log.addLog(nome.append(" ").append(apelido).append(" entra no carro."));
+        log.addLog(nome.append(" ").append(apelido).append(" entra no carro."));
+    }
+    else cout << "Nao foi encontrado nenhum piloto/carro com essas especificacoes";
 }
 
 void Comando::pilotoSaiDoCarro(istringstream &info) 
@@ -378,8 +381,11 @@ void Comando::adicionaParticipante(istringstream& info)
     info >> nome >> apelido;
 
     Piloto* participante = dgv->procuraPiloto(nome.append(" ").append(apelido));
-    campeonato->definirParticipante(participante);
-    log.addLog("Adicionar Participante.");
+    if (participante != nullptr) {
+        campeonato->definirParticipante(participante);
+        log.addLog("Adicionar Participante.");
+    }
+    else cout << "Nao foi encontrado nenhum piloto com esse nome";
 
 }
 
